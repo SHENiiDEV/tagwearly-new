@@ -21,7 +21,7 @@
 /storage/*.key
 /storage/pail
 /vendor
-_ide_helper.php
-Homestead.json
-Homestead.yaml
-Thumbs.db
+/database/*.sqlite
+/database/*.sqlite-journal
+/storage/app/public/*
+!.gitkeep
