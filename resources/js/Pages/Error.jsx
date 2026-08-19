@@ -6,74 +6,76 @@ import { ShieldAlert, AlertTriangle, Lock, Wrench, ArrowLeft, Sparkles, Home } f
 export default function Error({ status }) {
     const errorConfigs = {
         404: {
-            title: '404 — Lost in the Studio',
-            tagline: 'Page Not Found',
-            description: 'The requested fashion tech pack page was moved, archived, or never created.',
-            icon: AlertTriangle,
-            color: 'text-amber-400',
-            bgColor: 'bg-amber-500/10',
-            borderColor: 'border-amber-500/20',
+            code: '404',
+            title: 'Spec Page Not Found',
+            badge: 'Studio Spec Lost',
+            description: 'The requested fashion tech pack page was moved, archived, or never created in our archives.',
+            gradient: 'from-indigo-400 via-purple-400 to-pink-400',
+            badgeColor: 'text-amber-400 border-amber-500/40',
         },
         500: {
-            title: '500 — Temporary Technical Rest',
-            tagline: 'Internal Server Error',
+            code: '500',
+            title: 'Internal Server Error',
+            badge: 'Server Glitch',
             description: 'Our AI fashion compilation engine encountered a temporary server error. Our engineering team has been notified.',
-            icon: ShieldAlert,
-            color: 'text-rose-400',
-            bgColor: 'bg-rose-500/10',
-            borderColor: 'border-rose-500/20',
+            gradient: 'from-rose-400 via-purple-400 to-indigo-400',
+            badgeColor: 'text-rose-400 border-rose-500/40',
         },
         403: {
-            title: '403 — Restricted Brand Access',
-            tagline: 'Access Forbidden',
+            code: '403',
+            title: 'Access Forbidden',
+            badge: 'Restricted Access',
             description: 'You do not have administrative brand clearance to access this restricted specification area.',
-            icon: Lock,
-            color: 'text-purple-400',
-            bgColor: 'bg-purple-500/10',
-            borderColor: 'border-purple-500/20',
+            gradient: 'from-purple-400 via-pink-400 to-rose-400',
+            badgeColor: 'text-purple-400 border-purple-500/40',
         },
         503: {
-            title: '503 — Scheduled System Care',
-            tagline: 'Platform Maintenance',
+            code: '503',
+            title: 'Platform Maintenance',
+            badge: 'System Care',
             description: 'Tagwearly AI is currently undergoing scheduled infrastructure updates. We will be back online shortly.',
-            icon: Wrench,
-            color: 'text-indigo-400',
-            bgColor: 'bg-indigo-500/10',
-            borderColor: 'border-indigo-500/20',
+            gradient: 'from-indigo-400 via-purple-400 to-pink-400',
+            badgeColor: 'text-indigo-400 border-indigo-500/40',
         },
     };
 
     const config = errorConfigs[status] || errorConfigs[500];
-    const IconComponent = config.icon;
 
     return (
         <AppLayout>
-            <div className="min-h-[70vh] flex flex-col items-center justify-center text-center p-6 space-y-6">
-                <div className={`p-5 rounded-3xl ${config.bgColor} ${config.color} border ${config.borderColor} shadow-2xl animate-bounce`}>
-                    <IconComponent className="w-12 h-12" />
+            <div className="min-h-[75vh] flex flex-col items-center justify-center text-center p-6 space-y-6 relative overflow-hidden">
+                {/* Ambient Glow Orb */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-600/15 blur-[140px] pointer-events-none rounded-full" />
+
+                {/* Giant Glow Number */}
+                <div className="relative">
+                    <div className={`text-8xl sm:text-9xl font-black bg-gradient-to-r ${config.gradient} bg-clip-text text-transparent tracking-tighter drop-shadow-2xl`}>
+                        {config.code}
+                    </div>
+                    <span className={`absolute -top-3 -right-6 px-3 py-1 rounded-full bg-slate-900 border ${config.badgeColor} text-[10px] font-black uppercase tracking-wider shadow-xl backdrop-blur-md`}>
+                        {config.badge}
+                    </span>
                 </div>
 
-                <div className="space-y-2 max-w-lg">
-                    <span className="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-[10px] font-black uppercase text-slate-400 tracking-wider">
-                        {config.tagline}
-                    </span>
-                    <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight">{config.title}</h1>
+                <div className="space-y-3 max-w-lg mx-auto">
+                    <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">{config.title}</h1>
                     <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{config.description}</p>
                 </div>
 
+                {/* Action Buttons */}
                 <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
                     <Link
-                        href="/dashboard"
-                        className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-bold text-xs shadow-lg shadow-indigo-500/20 transition flex items-center space-x-2"
+                        href="/"
+                        className="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:to-pink-600 text-white font-black text-xs shadow-xl shadow-indigo-500/25 transition transform hover:-translate-y-0.5 flex items-center space-x-2"
                     >
                         <Home className="w-4 h-4" />
-                        <span>Return to Dashboard</span>
+                        <span>Return to Home Page</span>
                     </Link>
                     <Link
-                        href="/"
-                        className="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold text-xs border border-slate-800 transition"
+                        href="/dashboard"
+                        className="px-8 py-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-bold text-xs transition"
                     >
-                        Go to Home Page
+                        Go to Dashboard
                     </Link>
                 </div>
             </div>
