@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from '@inertiajs/react';
+import FloatingCurrencyDropdown from '@/Components/FloatingCurrencyDropdown';
+import CookieConsent from '@/Components/CookieConsent';
+import OfflineBanner from '@/Components/OfflineBanner';
+import { useCurrency } from '@/Components/CurrencyContext';
 import {
     Sparkles, ArrowRight, CheckCircle2, ShieldCheck, FileText, Layers,
     Palette, Download, Shirt, Zap, Globe, Cpu, ChevronRight, XCircle,
@@ -8,6 +12,7 @@ import {
 
 export default function Landing({ auth }) {
     const user = auth?.user;
+    const { formatPrice } = useCurrency();
 
     // Interactive Simulator State
     const [simGarment, setSimGarment] = useState('Heavyweight Zip Hoodie');
@@ -96,6 +101,8 @@ export default function Landing({ auth }) {
 
     return (
         <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
+            <OfflineBanner />
+
             {/* Ambient Background Light Orbs */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-tr from-indigo-600/20 via-purple-600/20 to-pink-600/10 blur-[140px] pointer-events-none rounded-full" />
             <div className="absolute top-[1200px] left-[-200px] w-[600px] h-[600px] bg-indigo-600/15 blur-[160px] pointer-events-none rounded-full" />
@@ -127,6 +134,9 @@ export default function Landing({ auth }) {
                     </nav>
 
                     <div className="flex items-center space-x-4">
+                        {/* Currency Selector */}
+                        <FloatingCurrencyDropdown />
+
                         {user ? (
                             <Link
                                 href="/dashboard"
@@ -418,7 +428,7 @@ export default function Landing({ auth }) {
                                 </li>
                                 <li className="flex items-start space-x-3">
                                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                                    <span><strong>€249 - €699 Flat Fee</strong> with official B2B PDF invoice (0% VAT).</span>
+                                    <span><strong>Flat Fee per Spec</strong> with official B2B PDF invoice (0% VAT).</span>
                                 </li>
                                 <li className="flex items-start space-x-3">
                                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
@@ -488,7 +498,7 @@ export default function Landing({ auth }) {
                                 </div>
                                 <div>
                                     <span className="text-xs font-bold text-slate-400 uppercase block">Sample Error Savings</span>
-                                    <strong className="text-2xl font-black text-emerald-400">€{moneySaved.toLocaleString()} EUR</strong>
+                                    <strong className="text-2xl font-black text-emerald-400">{formatPrice(moneySaved)}</strong>
                                     <span className="text-[11px] text-slate-500 block">Prevents ruined prototype rounds</span>
                                 </div>
                             </div>
@@ -517,7 +527,7 @@ export default function Landing({ auth }) {
                         <div className="p-7 rounded-3xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex flex-col justify-between space-y-6">
                             <div>
                                 <span className="text-xs font-black uppercase tracking-wider text-slate-400">Starter Spec</span>
-                                <div className="text-4xl font-black text-white mt-2">€249</div>
+                                <div className="text-4xl font-black text-white mt-2">{formatPrice(249)}</div>
                                 <p className="text-xs text-slate-400 mt-1">Single Basic Garment Spec</p>
 
                                 <ul className="mt-6 space-y-3 text-xs text-slate-300 border-t border-slate-800 pt-6">
@@ -544,7 +554,7 @@ export default function Landing({ auth }) {
                                 href={user ? '/dashboard' : '/register'}
                                 className="w-full py-3.5 px-4 text-center font-bold text-xs text-white rounded-xl bg-slate-800 hover:bg-slate-700 transition"
                             >
-                                Get Starter (€249)
+                                Get Starter ({formatPrice(249)})
                             </Link>
                         </div>
 
@@ -556,7 +566,7 @@ export default function Landing({ auth }) {
 
                             <div>
                                 <span className="text-xs font-black uppercase tracking-wider text-indigo-400">Pro Outerwear</span>
-                                <div className="text-4xl font-black text-white mt-2">€699</div>
+                                <div className="text-4xl font-black text-white mt-2">{formatPrice(699)}</div>
                                 <p className="text-xs text-slate-400 mt-1">Complex Outerwear / Heavy Spec</p>
 
                                 <ul className="mt-6 space-y-3 text-xs text-slate-200 border-t border-slate-800 pt-6">
@@ -587,7 +597,7 @@ export default function Landing({ auth }) {
                                 href={user ? '/dashboard' : '/register'}
                                 className="w-full py-3.5 px-4 text-center font-black text-xs text-white rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 shadow-lg transition transform hover:-translate-y-0.5"
                             >
-                                Generate Pro Spec (€699)
+                                Generate Pro Spec ({formatPrice(699)})
                             </Link>
                         </div>
 
@@ -595,7 +605,7 @@ export default function Landing({ auth }) {
                         <div className="p-7 rounded-3xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex flex-col justify-between space-y-6">
                             <div>
                                 <span className="text-xs font-black uppercase tracking-wider text-purple-400">Capsule Suite</span>
-                                <div className="text-4xl font-black text-white mt-2">€1,999</div>
+                                <div className="text-4xl font-black text-white mt-2">{formatPrice(1999)}</div>
                                 <p className="text-xs text-slate-400 mt-1">Full Capsule Collection (5 Items)</p>
 
                                 <ul className="mt-6 space-y-3 text-xs text-slate-300 border-t border-slate-800 pt-6">
@@ -622,15 +632,15 @@ export default function Landing({ auth }) {
                                 href={user ? '/dashboard' : '/register'}
                                 className="w-full py-3.5 px-4 text-center font-bold text-xs text-white rounded-xl bg-slate-800 hover:bg-slate-700 transition"
                             >
-                                Order Capsule Suite (€1,999)
+                                Order Capsule ({formatPrice(1999)})
                             </Link>
                         </div>
 
-                        {/* Enterprise Tier (€3,499) NEW */}
+                        {/* Enterprise Tier (€3,499) */}
                         <div className="p-7 rounded-3xl bg-slate-900 border border-purple-500/40 hover:border-purple-500/60 transition flex flex-col justify-between space-y-6">
                             <div>
                                 <span className="text-xs font-black uppercase tracking-wider text-pink-400">Enterprise Studio</span>
-                                <div className="text-4xl font-black text-white mt-2">€3,499</div>
+                                <div className="text-4xl font-black text-white mt-2">{formatPrice(3499)}</div>
                                 <p className="text-xs text-slate-400 mt-1">Full Season Launch (10 Items)</p>
 
                                 <ul className="mt-6 space-y-3 text-xs text-slate-300 border-t border-slate-800 pt-6">
@@ -657,7 +667,7 @@ export default function Landing({ auth }) {
                                 href={user ? '/dashboard' : '/register'}
                                 className="w-full py-3.5 px-4 text-center font-bold text-xs text-white rounded-xl bg-slate-800 hover:bg-slate-700 transition"
                             >
-                                Order Enterprise (€3,499)
+                                Order Enterprise ({formatPrice(3499)})
                             </Link>
                         </div>
                     </div>
@@ -715,6 +725,8 @@ export default function Landing({ auth }) {
                     </div>
                 </div>
             </footer>
+
+            <CookieConsent />
         </div>
     );
 }
