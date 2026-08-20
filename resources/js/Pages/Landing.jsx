@@ -126,12 +126,12 @@ export default function Landing({ auth }) {
                         </div>
                     </Link>
 
-                    <nav className="hidden md:flex items-center space-x-8 text-xs font-extrabold text-slate-400 uppercase tracking-wider">
-                        <a href="#simulator" className="hover:text-indigo-400 transition">Live Simulator</a>
-                        <a href="#comparison" className="hover:text-white transition">Comparison</a>
-                        <a href="#calculator" className="hover:text-white transition">ROI Calculator</a>
-                        <a href="#pricing" className="hover:text-white transition">Pricing Tiers</a>
-                        <a href="#faq" className="hover:text-white transition">FAQ</a>
+                    <nav className="hidden md:flex items-center space-x-6 text-xs font-extrabold text-slate-400 uppercase tracking-wider">
+                        <Link href="/how-it-works" className="hover:text-indigo-400 transition">How It Works</Link>
+                        <Link href="/about" className="hover:text-indigo-400 transition">About Us</Link>
+                        <Link href="/support" className="hover:text-indigo-400 transition">Support</Link>
+                        <Link href="/contact" className="hover:text-indigo-400 transition">Contact</Link>
+                        <a href="#pricing" className="hover:text-white transition">Pricing</a>
                     </nav>
 
                     <div className="flex items-center space-x-3 sm:space-x-4">
@@ -203,42 +203,42 @@ export default function Landing({ auth }) {
                                 </button>
                             </div>
 
-                            {/* Drawer Nav Anchors */}
+                            {/* Drawer Nav Links */}
                             <div className="space-y-2 text-xs font-bold text-slate-300">
-                                <a
-                                    href="#simulator"
+                                <Link
+                                    href="/how-it-works"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className="block p-3 rounded-2xl bg-slate-950 border border-slate-800 text-indigo-400 hover:text-white transition"
                                 >
-                                    Live Simulator
-                                </a>
-                                <a
-                                    href="#comparison"
+                                    How It Works
+                                </Link>
+                                <Link
+                                    href="/about"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className="block p-3 rounded-2xl bg-slate-950 border border-slate-800 hover:text-white transition"
                                 >
-                                    Comparison
-                                </a>
-                                <a
-                                    href="#calculator"
+                                    About Us
+                                </Link>
+                                <Link
+                                    href="/support"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className="block p-3 rounded-2xl bg-slate-950 border border-slate-800 hover:text-white transition"
                                 >
-                                    ROI Calculator
-                                </a>
+                                    Support & Help Desk
+                                </Link>
+                                <Link
+                                    href="/contact"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block p-3 rounded-2xl bg-slate-950 border border-slate-800 hover:text-white transition"
+                                >
+                                    Contact Trade Desk
+                                </Link>
                                 <a
                                     href="#pricing"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className="block p-3 rounded-2xl bg-slate-950 border border-slate-800 hover:text-white transition"
                                 >
                                     Pricing Tiers
-                                </a>
-                                <a
-                                    href="#faq"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className="block p-3 rounded-2xl bg-slate-950 border border-slate-800 hover:text-white transition"
-                                >
-                                    FAQ
                                 </a>
                             </div>
                         </div>
@@ -828,10 +828,14 @@ export default function Landing({ auth }) {
                         <p className="text-[11px] text-slate-500">Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, CF31 1JF, UK</p>
                     </div>
 
-                    <div className="flex items-center space-x-6">
-                        <Link href="/terms" className="hover:text-slate-300 transition">Terms of Service</Link>
-                        <Link href="/privacy" className="hover:text-slate-300 transition">Privacy Policy</Link>
-                        <Link href="/refund" className="hover:text-slate-300 transition">Refund Policy</Link>
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs">
+                        <Link href="/how-it-works" className="hover:text-slate-300 transition font-medium">How It Works</Link>
+                        <Link href="/about" className="hover:text-slate-300 transition font-medium">About Us</Link>
+                        <Link href="/support" className="hover:text-slate-300 transition font-medium">Support</Link>
+                        <Link href="/contact" className="hover:text-slate-300 transition font-medium">Contact Us</Link>
+                        <Link href="/terms" className="hover:text-slate-300 transition">Terms</Link>
+                        <Link href="/privacy" className="hover:text-slate-300 transition">Privacy</Link>
+                        <Link href="/refund" className="hover:text-slate-300 transition">Refund</Link>
                     </div>
                 </div>
             </footer>

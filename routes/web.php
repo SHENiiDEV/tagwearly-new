@@ -1,13 +1,14 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LegalController;
 use App\Http\Controllers\TechPackController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-// Public Landing Page (Root & /landing)
+// Public Pages
 Route::get('/', function () {
     return Inertia::render('Landing');
 })->name('home');
@@ -15,6 +16,21 @@ Route::get('/', function () {
 Route::get('/landing', function () {
     return Inertia::render('Landing');
 })->name('landing');
+
+Route::get('/how-it-works', function () {
+    return Inertia::render('HowItWorks');
+})->name('how-it-works');
+
+Route::get('/contact', [ContactController::class, 'show'])->name('contact');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
+Route::get('/support', function () {
+    return Inertia::render('Support');
+})->name('support');
+
+Route::get('/about', function () {
+    return Inertia::render('About');
+})->name('about');
 
 // Public Legal Pages
 Route::get('/terms', [LegalController::class, 'terms'])->name('terms');

@@ -5,7 +5,7 @@ import FloatingCurrencyDropdown from '@/Components/FloatingCurrencyDropdown';
 import CookieConsent from '@/Components/CookieConsent';
 import OfflineBanner from '@/Components/OfflineBanner';
 import { useCurrency } from '@/Components/CurrencyContext';
-import { Sparkles, Wallet, PlusCircle, LogOut, Layers, FileText, Menu, X } from 'lucide-react';
+import { Sparkles, Wallet, PlusCircle, LogOut, Layers, FileText, Menu, X, HelpCircle, Building2, Phone } from 'lucide-react';
 
 export default function AppLayout({ children }) {
     const { auth, flash } = usePage().props;
@@ -38,8 +38,8 @@ export default function AppLayout({ children }) {
                         </Link>
 
                         {/* Desktop Nav Links */}
-                        {user && (
-                            <nav className="hidden md:flex items-center space-x-6 text-sm font-semibold">
+                        <nav className="hidden md:flex items-center space-x-6 text-sm font-semibold">
+                            {user && (
                                 <Link
                                     href="/dashboard"
                                     className="text-slate-300 hover:text-white transition flex items-center space-x-1.5"
@@ -47,22 +47,38 @@ export default function AppLayout({ children }) {
                                     <Layers className="w-4 h-4 text-indigo-400" />
                                     <span>Dashboard</span>
                                 </Link>
-                                <Link
-                                    href="/tech-packs/create"
-                                    className="text-slate-300 hover:text-white transition flex items-center space-x-1.5"
-                                >
-                                    <PlusCircle className="w-4 h-4 text-purple-400" />
-                                    <span>New Tech Pack</span>
-                                </Link>
-                                <Link
-                                    href="/wallet"
-                                    className="text-slate-300 hover:text-white transition flex items-center space-x-1.5"
-                                >
-                                    <Wallet className="w-4 h-4 text-emerald-400" />
-                                    <span>Wallet & Billing</span>
-                                </Link>
-                            </nav>
-                        )}
+                            )}
+                            <Link href="/how-it-works" className="text-slate-300 hover:text-white transition">
+                                How It Works
+                            </Link>
+                            <Link href="/about" className="text-slate-300 hover:text-white transition">
+                                About Us
+                            </Link>
+                            <Link href="/support" className="text-slate-300 hover:text-white transition">
+                                Support
+                            </Link>
+                            <Link href="/contact" className="text-slate-300 hover:text-white transition">
+                                Contact
+                            </Link>
+                            {user && (
+                                <>
+                                    <Link
+                                        href="/tech-packs/create"
+                                        className="text-slate-300 hover:text-white transition flex items-center space-x-1.5"
+                                    >
+                                        <PlusCircle className="w-4 h-4 text-purple-400" />
+                                        <span>New Tech Pack</span>
+                                    </Link>
+                                    <Link
+                                        href="/wallet"
+                                        className="text-slate-300 hover:text-white transition flex items-center space-x-1.5"
+                                    >
+                                        <Wallet className="w-4 h-4 text-emerald-400" />
+                                        <span>Wallet</span>
+                                    </Link>
+                                </>
+                            )}
+                        </nav>
 
                         {/* Right Action Bar */}
                         <div className="flex items-center space-x-3 sm:space-x-4">
@@ -157,35 +173,78 @@ export default function AppLayout({ children }) {
                                 </div>
 
                                 {/* Drawer Nav Links */}
-                                {user ? (
-                                    <div className="space-y-3">
+                                <div className="space-y-2 text-xs font-bold">
+                                    {user && (
                                         <Link
                                             href="/dashboard"
                                             onClick={() => setIsMobileMenuOpen(false)}
-                                            className="flex items-center space-x-3 p-3.5 rounded-2xl bg-slate-950 border border-slate-800 text-white text-xs font-bold hover:border-indigo-500 transition"
+                                            className="flex items-center space-x-3 p-3 rounded-2xl bg-slate-950 border border-slate-800 text-white"
                                         >
                                             <Layers className="w-4 h-4 text-indigo-400" />
                                             <span>Dashboard</span>
                                         </Link>
-                                        <Link
-                                            href="/tech-packs/create"
-                                            onClick={() => setIsMobileMenuOpen(false)}
-                                            className="flex items-center space-x-3 p-3.5 rounded-2xl bg-slate-950 border border-slate-800 text-white text-xs font-bold hover:border-indigo-500 transition"
+                                    )}
+                                    <Link
+                                        href="/how-it-works"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="block p-3 rounded-2xl bg-slate-950 border border-slate-800 text-slate-200"
+                                    >
+                                        How It Works
+                                    </Link>
+                                    <Link
+                                        href="/about"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="block p-3 rounded-2xl bg-slate-950 border border-slate-800 text-slate-200"
+                                    >
+                                        About Us
+                                    </Link>
+                                    <Link
+                                        href="/support"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="block p-3 rounded-2xl bg-slate-950 border border-slate-800 text-slate-200"
+                                    >
+                                        Support & Help
+                                    </Link>
+                                    <Link
+                                        href="/contact"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="block p-3 rounded-2xl bg-slate-950 border border-slate-800 text-slate-200"
+                                    >
+                                        Contact Us
+                                    </Link>
+                                </div>
+                            </div>
+
+                            {/* Drawer Footer Actions */}
+                            <div className="pt-4 border-t border-slate-800 space-y-3">
+                                {user ? (
+                                    <>
+                                        <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between text-xs">
+                                            <span className="text-slate-400 font-medium">Balance:</span>
+                                            <strong className="text-emerald-400 text-sm font-black">{formatPrice(user.wallet_balance)}</strong>
+                                        </div>
+                                        <button
+                                            onClick={() => {
+                                                setIsMobileMenuOpen(false);
+                                                setIsTopUpOpen(true);
+                                            }}
+                                            className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-lg flex items-center justify-center space-x-2"
                                         >
-                                            <PlusCircle className="w-4 h-4 text-purple-400" />
-                                            <span>New Tech Pack</span>
-                                        </Link>
+                                            <PlusCircle className="w-4 h-4" />
+                                            <span>Top Up Wallet</span>
+                                        </button>
                                         <Link
-                                            href="/wallet"
-                                            onClick={() => setIsMobileMenuOpen(false)}
-                                            className="flex items-center space-x-3 p-3.5 rounded-2xl bg-slate-950 border border-slate-800 text-white text-xs font-bold hover:border-indigo-500 transition"
+                                            href="/logout"
+                                            method="post"
+                                            as="button"
+                                            className="w-full py-2.5 px-4 rounded-xl bg-slate-950 text-rose-400 text-xs font-bold border border-slate-800 flex items-center justify-center space-x-2"
                                         >
-                                            <Wallet className="w-4 h-4 text-emerald-400" />
-                                            <span>Wallet & Billing</span>
+                                            <LogOut className="w-4 h-4" />
+                                            <span>Logout</span>
                                         </Link>
-                                    </div>
+                                    </>
                                 ) : (
-                                    <div className="space-y-3">
+                                    <div className="space-y-2">
                                         <Link
                                             href="/login"
                                             onClick={() => setIsMobileMenuOpen(false)}
@@ -203,35 +262,6 @@ export default function AppLayout({ children }) {
                                     </div>
                                 )}
                             </div>
-
-                            {/* Drawer Footer Actions for Logged In User */}
-                            {user && (
-                                <div className="pt-4 border-t border-slate-800 space-y-3">
-                                    <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between text-xs">
-                                        <span className="text-slate-400 font-medium">Balance:</span>
-                                        <strong className="text-emerald-400 text-sm font-black">{formatPrice(user.wallet_balance)}</strong>
-                                    </div>
-                                    <button
-                                        onClick={() => {
-                                            setIsMobileMenuOpen(false);
-                                            setIsTopUpOpen(true);
-                                        }}
-                                        className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-lg flex items-center justify-center space-x-2"
-                                    >
-                                        <PlusCircle className="w-4 h-4" />
-                                        <span>Top Up Wallet</span>
-                                    </button>
-                                    <Link
-                                        href="/logout"
-                                        method="post"
-                                        as="button"
-                                        className="w-full py-2.5 px-4 rounded-xl bg-slate-950 text-rose-400 text-xs font-bold border border-slate-800 flex items-center justify-center space-x-2"
-                                    >
-                                        <LogOut className="w-4 h-4" />
-                                        <span>Logout</span>
-                                    </Link>
-                                </div>
-                            )}
                         </div>
                     </div>
                 )}
@@ -260,10 +290,14 @@ export default function AppLayout({ children }) {
                         <p className="text-slate-400 mt-0.5">INCHWARD LIMITED • Registered in England & Wales No. 16021412</p>
                         <p className="text-[11px] text-slate-500">Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, CF31 1JF, UK</p>
                     </div>
-                    <div className="flex items-center space-x-6">
-                        <Link href="/terms" className="hover:text-slate-300 transition">Terms of Service</Link>
-                        <Link href="/privacy" className="hover:text-slate-300 transition">Privacy Policy</Link>
-                        <Link href="/refund" className="hover:text-slate-300 transition">Refund Policy</Link>
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs">
+                        <Link href="/how-it-works" className="hover:text-slate-300 transition font-medium">How It Works</Link>
+                        <Link href="/about" className="hover:text-slate-300 transition font-medium">About Us</Link>
+                        <Link href="/support" className="hover:text-slate-300 transition font-medium">Support</Link>
+                        <Link href="/contact" className="hover:text-slate-300 transition font-medium">Contact Us</Link>
+                        <Link href="/terms" className="hover:text-slate-300 transition">Terms</Link>
+                        <Link href="/privacy" className="hover:text-slate-300 transition">Privacy</Link>
+                        <Link href="/refund" className="hover:text-slate-300 transition">Refund</Link>
                     </div>
                 </div>
             </footer>
