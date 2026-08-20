@@ -47,7 +47,7 @@ export default function Privacy() {
                         <Building2 className="w-4 h-4 text-indigo-400" />
                         <span>Data Controller Entity</span>
                     </div>
-                    <p><strong>Company Name:</strong> DRAYBOND LIMITED (Company No. 16021806)</p>
+                    <p><strong>Company Name:</strong> INCHWARD LIMITED (Company No. 16021412)</p>
                     <p><strong>Registered Address:</strong> Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, UK, CF31 1JF</p>
                     <p><strong>Data Protection Contact:</strong> info@tagwearly.co.uk</p>
                 </div>

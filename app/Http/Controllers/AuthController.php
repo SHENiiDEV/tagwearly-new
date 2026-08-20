@@ -98,9 +98,9 @@ class AuthController extends Controller
         ]);
 
         try {
-            Mail::to($user->email)->send(new WelcomeMail($user));
+            Mail::to($user->email)->send(new \App\Mail\WelcomeUserMail($user));
         } catch (\Throwable $e) {
-            logger()->error('Failed sending WelcomeMail: ' . $e->getMessage());
+            logger()->error('Failed sending WelcomeUserMail: ' . $e->getMessage());
         }
 
         Auth::login($user);

@@ -2,10 +2,11 @@
 
 namespace App\Services;
 
+use App\Models\TechPack;
 use App\Models\Transaction;
 use App\Models\User;
-use App\Mail\TopUpInvoiceMail;
-use App\Mail\DeductionAlertMail;
+use App\Mail\WalletTopUpMail;
+use App\Mail\DocumentPaymentMail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -22,7 +23,7 @@ class WalletService
     public function topUp(User $user, float $amount, string $serviceName = 'Wallet Top-Up'): Transaction
     {
         return DB::transaction(function () use ($user, $amount, $serviceName) {
-            $refCode = 'TW-INV-' . strtoupper(Str::random(8));
+            $refCode = 'TOPUP-' . strtoupper(Str::random(8));
 
             $transaction = Transaction::create([
                 'user_id' => $user->id,
@@ -35,30 +36,29 @@ class WalletService
 
             $user->increment('wallet_balance', $amount);
 
-            // Generate B2B PDF invoice
+            // Generate B2B PDF invoice file
             $invoicePath = $this->invoiceService->generateB2bInvoice($user, $transaction);
             $transaction->update(['invoice_path' => $invoicePath]);
 
             // Try sending email alert with PDF invoice attached
             try {
-                Mail::to($user->email)->send(new TopUpInvoiceMail($user, $transaction));
+                Mail::to($user->email)->send(new WalletTopUpMail($user, $transaction));
             } catch (\Throwable $e) {
-                // Log mail exception if SMTP is offline in local dev
-                logger()->error('Failed sending TopUpInvoiceMail: ' . $e->getMessage());
+                logger()->error('Failed sending WalletTopUpMail: ' . $e->getMessage());
             }
 
             return $transaction;
         });
     }
 
-    public function deduct(User $user, float $amount, string $serviceName): Transaction
+    public function deduct(User $user, float $amount, string $serviceName, ?TechPack $techPack = null): Transaction
     {
         if ($user->wallet_balance < $amount) {
             throw new \Exception("Insufficient wallet balance. Please top up your wallet.");
         }
 
-        return DB::transaction(function () use ($user, $amount, $serviceName) {
-            $refCode = 'TW-DED-' . strtoupper(Str::random(8));
+        return DB::transaction(function () use ($user, $amount, $serviceName, $techPack) {
+            $refCode = 'INV-' . strtoupper(Str::random(8));
 
             $user->decrement('wallet_balance', $amount);
 
@@ -71,10 +71,14 @@ class WalletService
                 'status' => 'completed',
             ]);
 
+            // Generate B2B PDF invoice file
+            $invoicePath = $this->invoiceService->generateB2bInvoice($user, $transaction);
+            $transaction->update(['invoice_path' => $invoicePath]);
+
             try {
-                Mail::to($user->email)->send(new DeductionAlertMail($user, $transaction));
+                Mail::to($user->email)->send(new DocumentPaymentMail($user, $transaction, $techPack));
             } catch (\Throwable $e) {
-                logger()->error('Failed sending DeductionAlertMail: ' . $e->getMessage());
+                logger()->error('Failed sending DocumentPaymentMail: ' . $e->getMessage());
             }
 
             return $transaction;

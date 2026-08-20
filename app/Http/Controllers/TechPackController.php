@@ -76,10 +76,7 @@ class TechPackController extends Controller
             ]);
         }
 
-        // Deduct balance cleanly with strict audit logging
-        $this->walletService->deduct($user, $price, $serviceName);
-
-        // Generate JSON data via DeepSeek AI engine
+        // Generate JSON data via AI engine
         $jsonData = $this->deepSeekService->generateTechPackData(
             $request->brief_text,
             $request->garment_type,
@@ -100,6 +97,9 @@ class TechPackController extends Controller
         // Render factory multi-page production PDF
         $pdfPath = $this->pdfService->generateTechPackPdf($techPack);
         $techPack->update(['pdf_path' => $pdfPath]);
+
+        // Deduct balance cleanly with strict audit logging & DocumentPaymentMail
+        $this->walletService->deduct($user, $price, $serviceName, $techPack);
 
         return redirect()->route('tech-packs.show', $techPack->id)
             ->with('success', 'Tech Pack successfully generated!');

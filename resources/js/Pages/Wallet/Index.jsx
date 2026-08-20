@@ -61,7 +61,7 @@ export default function WalletIndex({ walletBalance = 0, transactions = [] }) {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300">
                             <div>
                                 <span className="text-slate-500 block uppercase text-[10px] font-bold">Company Name</span>
-                                <strong className="text-white">DRAYBOND LIMITED</strong> (Company No. 16021806)
+                                <strong className="text-white">INCHWARD LIMITED</strong> (Company No. 16021412)
                             </div>
                             <div>
                                 <span className="text-slate-500 block uppercase text-[10px] font-bold">Registered Office</span>
@@ -73,7 +73,7 @@ export default function WalletIndex({ walletBalance = 0, transactions = [] }) {
                             </div>
                             <div>
                                 <span className="text-slate-500 block uppercase text-[10px] font-bold">Invoicing Guarantee</span>
-                                Automated PDF Invoice on every Top-Up
+                                Automated B2B PDF Invoice on every Transaction
                             </div>
                         </div>
                     </div>
@@ -135,18 +135,14 @@ export default function WalletIndex({ walletBalance = 0, transactions = [] }) {
                                                     {isTopUp ? '+' : '-'}€{tx.amount.toFixed(2)}
                                                 </td>
                                                 <td className="p-4 text-center">
-                                                    {tx.invoice_path ? (
-                                                        <a
-                                                            href={`/wallet/invoice/${tx.id}`}
-                                                            target="_blank"
-                                                            className="inline-flex items-center space-x-1 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition"
-                                                        >
-                                                            <Download className="w-3.5 h-3.5" />
-                                                            <span>Invoice PDF</span>
-                                                        </a>
-                                                    ) : (
-                                                        <span className="text-slate-600 text-[10px] uppercase font-bold">N/A</span>
-                                                    )}
+                                                    <a
+                                                        href={`/wallet/invoice/${tx.id}`}
+                                                        target="_blank"
+                                                        className="inline-flex items-center space-x-1 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition px-2.5 py-1 rounded-lg bg-indigo-500/10 border border-indigo-500/20"
+                                                    >
+                                                        <Download className="w-3.5 h-3.5" />
+                                                        <span>Invoice (PDF)</span>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         );

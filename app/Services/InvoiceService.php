@@ -12,16 +12,16 @@ class InvoiceService
     public function generateB2bInvoice(User $user, Transaction $transaction): string
     {
         $companyDetails = [
-            'name' => 'DRAYBOND LIMITED',
-            'company_number' => '16021806',
+            'name' => 'INCHWARD LIMITED',
+            'company_number' => '16021412',
             'address' => 'Academy House, 11 Dunraven Place',
             'city_postcode' => 'Bridgend, Mid Glamorgan, CF31 1JF',
             'country' => 'United Kingdom',
-            'vat_rate' => '0% (Reverse Charge - B2B Digital Service)',
+            'vat_rate' => '0% UK B2B / Reverse Charge',
             'email' => 'info@tagwearly.co.uk',
         ];
 
-        $html = view('invoices.b2b', [
+        $html = view('pdf.wallet_invoice', [
             'company' => $companyDetails,
             'user' => $user,
             'transaction' => $transaction,
@@ -29,7 +29,7 @@ class InvoiceService
 
         $pdf = Pdf::loadHTML($html)->setPaper('a4', 'portrait');
 
-        $fileName = 'invoices/INVOICE_' . $transaction->reference_code . '.pdf';
+        $fileName = 'invoices/INVOICE_' . ($transaction->reference_code ?: $transaction->id) . '.pdf';
         Storage::disk('public')->put($fileName, $pdf->output());
 
         return $fileName;

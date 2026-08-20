@@ -47,8 +47,8 @@ export default function Terms() {
                         <Building2 className="w-4 h-4 text-indigo-400" />
                         <span>Operating Merchant Entity</span>
                     </div>
-                    <p><strong>Company Name:</strong> DRAYBOND LIMITED</p>
-                    <p><strong>Registered Company Number:</strong> 16021806 (England & Wales)</p>
+                    <p><strong>Company Name:</strong> INCHWARD LIMITED</p>
+                    <p><strong>Registered Company Number:</strong> 16021412 (England & Wales)</p>
                     <p><strong>Registered Address:</strong> Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, United Kingdom, CF31 1JF</p>
                     <p><strong>Official Contact Email:</strong> info@tagwearly.co.uk</p>
                 </div>

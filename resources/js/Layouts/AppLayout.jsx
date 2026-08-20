@@ -140,7 +140,7 @@ export default function AppLayout({ children }) {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
                     <div>
                         <div className="font-extrabold text-white">TAGWEARLY AI</div>
-                        <p className="text-slate-400 mt-0.5">DRAYBOND LIMITED • Registered in England & Wales No. 16021806</p>
+                        <p className="text-slate-400 mt-0.5">INCHWARD LIMITED • Registered in England & Wales No. 16021412</p>
                         <p className="text-[11px] text-slate-500">Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, CF31 1JF, UK</p>
                     </div>
                     <div className="flex items-center space-x-6">

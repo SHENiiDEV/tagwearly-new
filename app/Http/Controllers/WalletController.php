@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use App\Services\InvoiceService;
 use App\Services\WalletService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,17 +54,17 @@ class WalletController extends Controller
 
     public function downloadInvoice(Transaction $transaction)
     {
-        if ($transaction->user_id !== Auth::id()) {
-            abort(403);
+        $user = Auth::user();
+        abort_if($transaction->user_id !== $user->id, 403);
+
+        $ref = $transaction->reference_code ?: ('INV-' . $transaction->id);
+
+        if ($transaction->invoice_path && Storage::disk('public')->exists($transaction->invoice_path)) {
+            return Storage::disk('public')->download($transaction->invoice_path, "Invoice_{$ref}.pdf");
         }
 
-        if (!$transaction->invoice_path || !Storage::disk('public')->exists($transaction->invoice_path)) {
-            return back()->withErrors(['invoice' => 'Invoice file not found.']);
-        }
-
-        return Storage::disk('public')->download(
-            $transaction->invoice_path,
-            'INVOICE_' . $transaction->reference_code . '.pdf'
-        );
+        $invoiceService = app(InvoiceService::class);
+        $path = $invoiceService->generateB2bInvoice($user, $transaction);
+        return Storage::disk('public')->download($path, "Invoice_{$ref}.pdf");
     }
 }

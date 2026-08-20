@@ -47,7 +47,7 @@ export default function Refund() {
                         <Building2 className="w-4 h-4 text-indigo-400" />
                         <span>Commercial Merchant Entity</span>
                     </div>
-                    <p><strong>Company Name:</strong> DRAYBOND LIMITED (Company No. 16021806)</p>
+                    <p><strong>Company Name:</strong> INCHWARD LIMITED (Company No. 16021412)</p>
                     <p><strong>Registered Address:</strong> Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, UK, CF31 1JF</p>
                     <p><strong>Refund Claims Email:</strong> info@tagwearly.co.uk</p>
                 </div>

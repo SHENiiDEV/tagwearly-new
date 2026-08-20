@@ -205,7 +205,7 @@ export default function Landing({ auth }) {
                     <div className="pt-12 flex flex-wrap items-center justify-center gap-8 text-xs text-slate-400 font-medium">
                         <div className="flex items-center space-x-2 bg-slate-900/60 border border-slate-800/80 px-4 py-2 rounded-xl">
                             <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                            <span>Merchant: <strong>DRAYBOND LIMITED</strong> (UK No. 16021806)</span>
+                            <span>Merchant: <strong>INCHWARD LIMITED</strong> (UK No. 16021412)</span>
                         </div>
                         <div className="flex items-center space-x-2 bg-slate-900/60 border border-slate-800/80 px-4 py-2 rounded-xl">
                             <Globe className="w-4 h-4 text-indigo-400" />
@@ -695,7 +695,7 @@ export default function Landing({ auth }) {
                         <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
                             <h3 className="text-sm font-bold text-white">How does B2B invoicing work?</h3>
                             <p className="text-slate-400 leading-relaxed">
-                                Every top-up transaction generates an official B2B PDF invoice issued by <strong>DRAYBOND LIMITED</strong> (Company No. 16021806, UK) under 0% VAT Reverse Charge rules. The invoice is automatically sent to your email and downloadable in your wallet dashboard.
+                                Every top-up transaction generates an official B2B PDF invoice issued by <strong>INCHWARD LIMITED</strong> (Company No. 16021412, UK) under 0% VAT Reverse Charge rules. The invoice is automatically sent to your email and downloadable in your wallet dashboard.
                             </p>
                         </div>
 
@@ -714,7 +714,7 @@ export default function Landing({ auth }) {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
                     <div>
                         <div className="font-extrabold text-white text-sm">TAGWEARLY AI</div>
-                        <p className="text-slate-400 mt-1">DRAYBOND LIMITED • Registered in England & Wales No. 16021806</p>
+                        <p className="text-slate-400 mt-1">INCHWARD LIMITED • Registered in England & Wales No. 16021412</p>
                         <p className="text-[11px] text-slate-500">Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, CF31 1JF, UK</p>
                     </div>
 
