@@ -7,12 +7,13 @@ import { useCurrency } from '@/Components/CurrencyContext';
 import {
     Sparkles, ArrowRight, CheckCircle2, ShieldCheck, FileText, Layers,
     Palette, Download, Shirt, Zap, Globe, Cpu, ChevronRight, XCircle,
-    TrendingUp, Clock, DollarSign, RefreshCw, Award, Star
+    TrendingUp, Clock, DollarSign, RefreshCw, Award, Star, Menu, X
 } from 'lucide-react';
 
 export default function Landing({ auth }) {
     const user = auth?.user;
     const { formatPrice } = useCurrency();
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     // Interactive Simulator State
     const [simGarment, setSimGarment] = useState('Heavyweight Zip Hoodie');
@@ -133,20 +134,20 @@ export default function Landing({ auth }) {
                         <a href="#faq" className="hover:text-white transition">FAQ</a>
                     </nav>
 
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-3 sm:space-x-4">
                         {/* Currency Selector */}
                         <FloatingCurrencyDropdown />
 
                         {user ? (
                             <Link
                                 href="/dashboard"
-                                className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-lg shadow-indigo-600/25 transition flex items-center space-x-2 transform hover:-translate-y-0.5"
+                                className="hidden sm:flex px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-lg shadow-indigo-600/25 transition items-center space-x-2 transform hover:-translate-y-0.5"
                             >
                                 <Sparkles className="w-4 h-4" />
                                 <span>Go to Dashboard</span>
                             </Link>
                         ) : (
-                            <>
+                            <div className="hidden sm:flex items-center space-x-3">
                                 <Link
                                     href="/login"
                                     className="px-4 py-2 text-xs font-bold text-slate-300 hover:text-white transition"
@@ -160,11 +161,120 @@ export default function Landing({ auth }) {
                                     <span>Get Started</span>
                                     <ArrowRight className="w-3.5 h-3.5" />
                                 </Link>
-                            </>
+                            </div>
                         )}
+
+                        {/* Mobile Hamburger Toggle Button */}
+                        <button
+                            type="button"
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className="p-2.5 md:hidden rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition"
+                            aria-label="Toggle Menu"
+                        >
+                            <Menu className="w-5 h-5" />
+                        </button>
                     </div>
                 </div>
             </header>
+
+            {/* Mobile Slide-Over Drawer from Right */}
+            {isMobileMenuOpen && (
+                <div className="fixed inset-0 z-50 md:hidden">
+                    {/* Backdrop Overlay */}
+                    <div
+                        className="fixed inset-0 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                    />
+
+                    {/* Sliding Panel from Right */}
+                    <div className="fixed inset-y-0 right-0 w-full max-w-xs bg-slate-900 border-l border-slate-800 p-6 flex flex-col justify-between shadow-2xl z-50 animate-in slide-in-from-right duration-300">
+                        <div className="space-y-6">
+                            {/* Drawer Header */}
+                            <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+                                <div className="flex items-center space-x-2">
+                                    <img src="/images/logo.jpg" alt="Logo" className="w-8 h-8 rounded-lg object-cover" />
+                                    <span className="font-black text-white text-sm tracking-tight">TAGWEARLY AI</span>
+                                </div>
+                                <button
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="p-2 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition"
+                                >
+                                    <X className="w-5 h-5" />
+                                </button>
+                            </div>
+
+                            {/* Drawer Nav Anchors */}
+                            <div className="space-y-2 text-xs font-bold text-slate-300">
+                                <a
+                                    href="#simulator"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block p-3 rounded-2xl bg-slate-950 border border-slate-800 text-indigo-400 hover:text-white transition"
+                                >
+                                    Live Simulator
+                                </a>
+                                <a
+                                    href="#comparison"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block p-3 rounded-2xl bg-slate-950 border border-slate-800 hover:text-white transition"
+                                >
+                                    Comparison
+                                </a>
+                                <a
+                                    href="#calculator"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block p-3 rounded-2xl bg-slate-950 border border-slate-800 hover:text-white transition"
+                                >
+                                    ROI Calculator
+                                </a>
+                                <a
+                                    href="#pricing"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block p-3 rounded-2xl bg-slate-950 border border-slate-800 hover:text-white transition"
+                                >
+                                    Pricing Tiers
+                                </a>
+                                <a
+                                    href="#faq"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block p-3 rounded-2xl bg-slate-950 border border-slate-800 hover:text-white transition"
+                                >
+                                    FAQ
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* Drawer Auth CTA Footer */}
+                        <div className="pt-4 border-t border-slate-800 space-y-3">
+                            {user ? (
+                                <Link
+                                    href="/dashboard"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block text-center py-3.5 px-4 rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-black text-xs shadow-lg"
+                                >
+                                    Go to Dashboard
+                                </Link>
+                            ) : (
+                                <>
+                                    <Link
+                                        href="/login"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="block text-center py-3 px-4 rounded-2xl bg-slate-950 border border-slate-800 text-slate-200 text-xs font-bold"
+                                    >
+                                        Sign In
+                                    </Link>
+                                    <Link
+                                        href="/register"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="block text-center py-3.5 px-4 rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-black text-xs shadow-lg"
+                                    >
+                                        Get Started
+                                    </Link>
+                                </>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {/* Hero Section */}
             <section className="relative pt-16 pb-20 md:pt-28 md:pb-32">

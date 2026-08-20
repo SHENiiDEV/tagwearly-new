@@ -5,12 +5,13 @@ import FloatingCurrencyDropdown from '@/Components/FloatingCurrencyDropdown';
 import CookieConsent from '@/Components/CookieConsent';
 import OfflineBanner from '@/Components/OfflineBanner';
 import { useCurrency } from '@/Components/CurrencyContext';
-import { Sparkles, Wallet, PlusCircle, LogOut, Layers, FileText } from 'lucide-react';
+import { Sparkles, Wallet, PlusCircle, LogOut, Layers, FileText, Menu, X } from 'lucide-react';
 
 export default function AppLayout({ children }) {
     const { auth, flash } = usePage().props;
     const user = auth?.user;
     const [isTopUpOpen, setIsTopUpOpen] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { formatPrice } = useCurrency();
 
     return (
@@ -36,7 +37,7 @@ export default function AppLayout({ children }) {
                             </div>
                         </Link>
 
-                        {/* Nav Links */}
+                        {/* Desktop Nav Links */}
                         {user && (
                             <nav className="hidden md:flex items-center space-x-6 text-sm font-semibold">
                                 <Link
@@ -64,14 +65,14 @@ export default function AppLayout({ children }) {
                         )}
 
                         {/* Right Action Bar */}
-                        <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-3 sm:space-x-4">
                             {/* Floating Currency Selector */}
                             <FloatingCurrencyDropdown />
 
                             {user ? (
                                 <>
-                                    {/* Wallet Balance Pill */}
-                                    <div className="flex items-center bg-slate-900 border border-slate-800 rounded-xl p-1.5 pl-3 space-x-3 shadow-inner">
+                                    {/* Desktop Wallet Balance Pill */}
+                                    <div className="hidden sm:flex items-center bg-slate-900 border border-slate-800 rounded-xl p-1.5 pl-3 space-x-3 shadow-inner">
                                         <div className="flex items-center space-x-1.5">
                                             <Wallet className="w-4 h-4 text-emerald-400" />
                                             <span className="text-xs text-slate-400 font-medium">Balance:</span>
@@ -88,19 +89,19 @@ export default function AppLayout({ children }) {
                                         </button>
                                     </div>
 
-                                    {/* Logout */}
+                                    {/* Desktop Logout */}
                                     <Link
                                         href="/logout"
                                         method="post"
                                         as="button"
-                                        className="p-2 text-slate-400 hover:text-rose-400 hover:bg-slate-900 rounded-xl transition"
+                                        className="hidden sm:flex p-2 text-slate-400 hover:text-rose-400 hover:bg-slate-900 rounded-xl transition"
                                         title="Logout"
                                     >
                                         <LogOut className="w-5 h-5" />
                                     </Link>
                                 </>
                             ) : (
-                                <div className="flex items-center space-x-3">
+                                <div className="hidden sm:flex items-center space-x-3">
                                     <Link
                                         href="/login"
                                         className="px-4 py-2 text-xs font-bold text-slate-300 hover:text-white transition"
@@ -115,9 +116,125 @@ export default function AppLayout({ children }) {
                                     </Link>
                                 </div>
                             )}
+
+                            {/* Mobile Hamburger Toggle Button */}
+                            <button
+                                type="button"
+                                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                                className="p-2.5 md:hidden rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition"
+                                aria-label="Toggle Menu"
+                            >
+                                <Menu className="w-5 h-5" />
+                            </button>
                         </div>
                     </div>
                 </header>
+
+                {/* Mobile Right-side Slide-Over Drawer */}
+                {isMobileMenuOpen && (
+                    <div className="fixed inset-0 z-50 md:hidden">
+                        {/* Backdrop Overlay */}
+                        <div
+                            className="fixed inset-0 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        />
+
+                        {/* Sliding Panel from Right */}
+                        <div className="fixed inset-y-0 right-0 w-full max-w-xs bg-slate-900 border-l border-slate-800 p-6 flex flex-col justify-between shadow-2xl z-50 animate-in slide-in-from-right duration-300">
+                            <div className="space-y-6">
+                                {/* Drawer Header */}
+                                <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+                                    <div className="flex items-center space-x-2">
+                                        <img src="/images/logo.jpg" alt="Logo" className="w-8 h-8 rounded-lg object-cover" />
+                                        <span className="font-black text-white text-sm tracking-tight">TAGWEARLY AI</span>
+                                    </div>
+                                    <button
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="p-2 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition"
+                                    >
+                                        <X className="w-5 h-5" />
+                                    </button>
+                                </div>
+
+                                {/* Drawer Nav Links */}
+                                {user ? (
+                                    <div className="space-y-3">
+                                        <Link
+                                            href="/dashboard"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="flex items-center space-x-3 p-3.5 rounded-2xl bg-slate-950 border border-slate-800 text-white text-xs font-bold hover:border-indigo-500 transition"
+                                        >
+                                            <Layers className="w-4 h-4 text-indigo-400" />
+                                            <span>Dashboard</span>
+                                        </Link>
+                                        <Link
+                                            href="/tech-packs/create"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="flex items-center space-x-3 p-3.5 rounded-2xl bg-slate-950 border border-slate-800 text-white text-xs font-bold hover:border-indigo-500 transition"
+                                        >
+                                            <PlusCircle className="w-4 h-4 text-purple-400" />
+                                            <span>New Tech Pack</span>
+                                        </Link>
+                                        <Link
+                                            href="/wallet"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="flex items-center space-x-3 p-3.5 rounded-2xl bg-slate-950 border border-slate-800 text-white text-xs font-bold hover:border-indigo-500 transition"
+                                        >
+                                            <Wallet className="w-4 h-4 text-emerald-400" />
+                                            <span>Wallet & Billing</span>
+                                        </Link>
+                                    </div>
+                                ) : (
+                                    <div className="space-y-3">
+                                        <Link
+                                            href="/login"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="block text-center py-3 px-4 rounded-2xl bg-slate-950 border border-slate-800 text-slate-200 text-xs font-bold"
+                                        >
+                                            Sign In
+                                        </Link>
+                                        <Link
+                                            href="/register"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="block text-center py-3.5 px-4 rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-xs font-black shadow-lg"
+                                        >
+                                            Get Started
+                                        </Link>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Drawer Footer Actions for Logged In User */}
+                            {user && (
+                                <div className="pt-4 border-t border-slate-800 space-y-3">
+                                    <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between text-xs">
+                                        <span className="text-slate-400 font-medium">Balance:</span>
+                                        <strong className="text-emerald-400 text-sm font-black">{formatPrice(user.wallet_balance)}</strong>
+                                    </div>
+                                    <button
+                                        onClick={() => {
+                                            setIsMobileMenuOpen(false);
+                                            setIsTopUpOpen(true);
+                                        }}
+                                        className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-lg flex items-center justify-center space-x-2"
+                                    >
+                                        <PlusCircle className="w-4 h-4" />
+                                        <span>Top Up Wallet</span>
+                                    </button>
+                                    <Link
+                                        href="/logout"
+                                        method="post"
+                                        as="button"
+                                        className="w-full py-2.5 px-4 rounded-xl bg-slate-950 text-rose-400 text-xs font-bold border border-slate-800 flex items-center justify-center space-x-2"
+                                    >
+                                        <LogOut className="w-4 h-4" />
+                                        <span>Logout</span>
+                                    </Link>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                )}
 
                 {/* Flash Alerts */}
                 {flash?.success && (
