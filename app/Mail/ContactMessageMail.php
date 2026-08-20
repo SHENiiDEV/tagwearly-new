@@ -22,7 +22,7 @@ class ContactMessageMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: "Tagwearly AI Ticket [#SLA-4H]: " . ($this->contactData['subject'] ?? 'New Support Request'),
+            subject: "Tagwearly AI Ticket [#SLA-24/48H]: " . ($this->contactData['subject'] ?? 'New Support Request'),
         );
     }
 

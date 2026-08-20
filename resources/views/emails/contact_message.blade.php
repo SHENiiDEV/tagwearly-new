@@ -36,7 +36,7 @@
             </div>
 
             <p style="font-size: 12px; color: #94a3b8;">
-                SLA Guarantee: Trade department response target is less than 4 business hours.
+                SLA Guarantee: Trade department response target is within 24–48 business hours.
             </p>
         </div>
         <div class="footer">

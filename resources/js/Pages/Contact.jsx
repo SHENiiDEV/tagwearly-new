@@ -26,7 +26,7 @@ export default function Contact({ company }) {
                 <div className="text-center space-y-3">
                     <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-black uppercase tracking-wider">
                         <Clock className="w-4 h-4" />
-                        <span>SLA Guarantee: &lt; 4 Working Hours Response</span>
+                        <span>SLA Guarantee: 24–48 Working Hours Response</span>
                     </div>
                     <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
                         Contact Tagwearly AI Trade Desk
@@ -165,10 +165,10 @@ export default function Contact({ company }) {
                         <div className="p-6 rounded-3xl bg-slate-900 border border-emerald-500/30 space-y-3 shadow-xl">
                             <div className="flex items-center space-x-2 text-emerald-400 text-xs font-bold">
                                 <ShieldCheck className="w-4 h-4" />
-                                <span>4-Hour Trade SLA Guarantee</span>
+                                <span>24–48 Hour Trade SLA Guarantee</span>
                             </div>
                             <p className="text-xs text-slate-300 leading-relaxed">
-                                All logged support tickets are routed directly to our dedicated B2B client success desk. Guaranteed response within &lt; 4 business hours.
+                                All logged support tickets are routed directly to our dedicated B2B client success desk. Guaranteed response within 24–48 business hours.
                             </p>
                         </div>
                     </div>

@@ -16,7 +16,7 @@ class ContactController extends Controller
             'company_number' => config('app.company_number', '16021412'),
             'address' => config('app.company_address', 'Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, CF31 1JF, United Kingdom'),
             'email' => config('mail.from.address', 'info@tagwearly.co.uk'),
-            'sla' => '< 4 Working Hours SLA Response',
+            'sla' => '24-48 Working Hours SLA Response',
         ];
 
         return Inertia::render('Contact', [
@@ -41,6 +41,6 @@ class ContactController extends Controller
             logger()->error('Failed sending ContactMessageMail: ' . $e->getMessage());
         }
 
-        return back()->with('success', 'Your support ticket has been logged successfully! Our Trade Department will respond within < 4 working hours.');
+        return back()->with('success', 'Your support ticket has been logged successfully! Our Trade Department will respond within 24–48 working hours.');
     }
 }
