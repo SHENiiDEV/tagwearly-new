@@ -142,8 +142,8 @@ export default function Landing({ auth }) {
             <header className="sticky top-0 z-50 w-full border-b border-slate-800/80 bg-slate-950/85 backdrop-blur-xl">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
                     {/* Brand Logo with Clean Transparent PNG Asset */}
-                    <Link href="/" className="flex items-center space-x-3 group">
-                        <img src="/images/logo_horizontal.png" alt="Tagwearly AI Logo" className="h-10 sm:h-12 w-auto object-contain hover:scale-105 transition-transform duration-300 drop-shadow-lg" />
+                    <Link href="/" className="flex items-center group py-1">
+                        <img src="/images/logo_horizontal.png" alt="Tagwearly AI Logo" className="h-10 sm:h-14 w-auto object-contain hover:scale-105 transition-transform duration-300 drop-shadow-xl" />
                     </Link>
 
                     {/* Nav Links */}
