@@ -141,11 +141,9 @@ export default function Landing({ auth }) {
             {/* Navigation Header */}
             <header className="sticky top-0 z-50 w-full border-b border-slate-800/80 bg-slate-950/85 backdrop-blur-xl">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-                    {/* Brand Logo with New High-Res Horizontal Asset */}
+                    {/* Brand Logo with Clean Transparent PNG Asset */}
                     <Link href="/" className="flex items-center space-x-3 group">
-                        <div className="h-11 rounded-xl overflow-hidden border border-indigo-500/30 shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300 bg-slate-900 px-2 py-1 flex items-center">
-                            <img src="/images/logo_large.jpg" alt="Tagwearly AI Logo" className="h-full w-auto object-contain" />
-                        </div>
+                        <img src="/images/logo_horizontal.png" alt="Tagwearly AI Logo" className="h-10 sm:h-12 w-auto object-contain hover:scale-105 transition-transform duration-300 drop-shadow-lg" />
                     </Link>
 
                     {/* Nav Links */}
@@ -215,8 +213,8 @@ export default function Landing({ auth }) {
                         <div className="space-y-6">
                             {/* Drawer Header */}
                             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-                                <div className="h-8 flex items-center">
-                                    <img src="/images/logo_large.jpg" alt="Logo" className="h-full w-auto object-contain" />
+                                <div className="h-9 flex items-center">
+                                    <img src="/images/logo_horizontal.png" alt="Logo" className="h-full w-auto object-contain" />
                                 </div>
                                 <button
                                     onClick={() => setIsMobileMenuOpen(false)}
@@ -881,8 +879,8 @@ export default function Landing({ auth }) {
             <footer className="border-t border-slate-900 bg-slate-950 py-12 text-xs text-slate-500">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
                     <div>
-                        <div className="h-10 mb-2 flex items-center">
-                            <img src="/images/logo_large.jpg" alt="Tagwearly AI Logo" className="h-full w-auto object-contain" />
+                        <div className="h-10 mb-3 flex items-center">
+                            <img src="/images/logo_horizontal.png" alt="Tagwearly AI Logo" className="h-full w-auto object-contain drop-shadow-md" />
                         </div>
                         <p className="text-slate-400 mt-1">INCHWARD LIMITED • Registered in England & Wales No. 16021412</p>
                         <p className="text-[11px] text-slate-500">Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, CF31 1JF, UK</p>

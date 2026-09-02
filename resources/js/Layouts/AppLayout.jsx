@@ -24,9 +24,7 @@ export default function AppLayout({ children }) {
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
                         {/* Brand Logo ALWAYS points to Home / */}
                         <Link href="/" className="flex items-center space-x-3 group">
-                            <div className="h-11 rounded-xl overflow-hidden border border-indigo-500/30 shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300 bg-slate-900 px-2 py-1 flex items-center">
-                                <img src="/images/logo_large.jpg" alt="Tagwearly AI Logo" className="h-full w-auto object-contain" />
-                            </div>
+                            <img src="/images/logo_horizontal.png" alt="Tagwearly AI Logo" className="h-10 sm:h-12 w-auto object-contain hover:scale-105 transition-transform duration-300 drop-shadow-lg" />
                         </Link>
 
                         {/* Desktop Nav Links */}
