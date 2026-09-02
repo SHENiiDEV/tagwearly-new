@@ -7,13 +7,17 @@ import { useCurrency } from '@/Components/CurrencyContext';
 import {
     Sparkles, ArrowRight, CheckCircle2, ShieldCheck, FileText, Layers,
     Palette, Download, Shirt, Zap, Globe, Cpu, ChevronRight, XCircle,
-    TrendingUp, Clock, DollarSign, RefreshCw, Award, Star, Menu, X
+    TrendingUp, Clock, DollarSign, RefreshCw, Award, Star, Menu, X,
+    Scissors, Calculator, HelpCircle
 } from 'lucide-react';
 
 export default function Landing({ auth }) {
     const user = auth?.user;
     const { formatPrice } = useCurrency();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    // Interactive Simulator Category Filter
+    const [selectedCategory, setSelectedCategory] = useState('all');
 
     // Interactive Simulator State
     const [simGarment, setSimGarment] = useState('Heavyweight Zip Hoodie');
@@ -25,6 +29,7 @@ export default function Landing({ auth }) {
     // Preset simulators
     const presets = [
         {
+            category: 'hoodies',
             title: 'Heavyweight Zip Hoodie',
             fabric: '450 GSM French Terry (100% Cotton)',
             color: 'Washed Slate Grey (#475569)',
@@ -44,6 +49,7 @@ export default function Landing({ auth }) {
             hex: '#475569',
         },
         {
+            category: 'bottoms',
             title: 'Technical Utility Cargo Pants',
             fabric: '220 GSM Water-Resistant Nylon Ripstop',
             color: 'Tactical Stealth Black (#0f172a)',
@@ -63,6 +69,7 @@ export default function Landing({ auth }) {
             hex: '#0f172a',
         },
         {
+            category: 'tees',
             title: 'Acid Wash Vintage Oversized Tee',
             fabric: '280 GSM Ring-Spun Cotton Jersey',
             color: 'Vintage Acid Washed Black (#1e293b)',
@@ -81,7 +88,30 @@ export default function Landing({ auth }) {
             pantone: 'Pantone 19-4007 TCX (Anthracite)',
             hex: '#1e293b',
         },
+        {
+            category: 'outerwear',
+            title: 'Insulated Puffer Jacket',
+            fabric: '300D Matte Nylon + PrimaLoft Insulation',
+            color: 'Deep Midnight Indigo (#1e1b4b)',
+            styleCode: 'TW-JKT-9005',
+            bom: [
+                { category: 'Outer Shell', item: 'Matte Nylon Taffeta', comp: '100% Nylon 300D, DWR Finish', ref: 'NYL-300D' },
+                { category: 'Insulation', item: 'PrimaLoft Eco Gold', comp: '100% Recycled Poly, 160 GSM', ref: 'PRIMA-160' },
+                { category: 'Zippers', item: 'YKK Vislon #5 Waterproof', comp: '2-Way Matte Black Pulls', ref: 'YKK-VIS-5' },
+            ],
+            measurements: [
+                { pom: 'Body Length (HPS)', S: 70, M: 73, L: 76, XL: 79 },
+                { pom: 'Chest Circumference', S: 120, M: 126, L: 132, XL: 138 },
+                { pom: 'Sleeve Length from Neck', S: 78, M: 80, L: 82, XL: 84 },
+            ],
+            pantone: 'Pantone 19-3921 TCX (Black Iris)',
+            hex: '#1e1b4b',
+        },
     ];
+
+    const filteredPresets = selectedCategory === 'all'
+        ? presets
+        : presets.filter(p => p.category === selectedCategory);
 
     const runSimulator = (preset) => {
         setIsSimulating(true);
@@ -92,7 +122,7 @@ export default function Landing({ auth }) {
         setTimeout(() => {
             setSimResult(preset);
             setIsSimulating(false);
-        }, 1200);
+        }, 1000);
     };
 
     // ROI Calculator State
@@ -101,7 +131,7 @@ export default function Landing({ auth }) {
     const moneySaved = garmentCount * 1250; // average wasted sample rounds saved in EUR
 
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
+        <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-indigo-500 selection:text-white relative overflow-x-hidden pb-20">
             <OfflineBanner />
 
             {/* Ambient Background Light Orbs */}
@@ -109,28 +139,22 @@ export default function Landing({ auth }) {
             <div className="absolute top-[1200px] left-[-200px] w-[600px] h-[600px] bg-indigo-600/15 blur-[160px] pointer-events-none rounded-full" />
 
             {/* Navigation Header */}
-            <header className="sticky top-0 z-50 w-full border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl">
+            <header className="sticky top-0 z-50 w-full border-b border-slate-800/80 bg-slate-950/85 backdrop-blur-xl">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-                    {/* ALWAYS navigates to Home / */}
+                    {/* Brand Logo with New High-Res Horizontal Asset */}
                     <Link href="/" className="flex items-center space-x-3 group">
-                        <div className="w-10 h-10 rounded-xl overflow-hidden border border-indigo-500/30 shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300">
-                            <img src="/images/logo.jpg" alt="Tagwearly AI Logo" className="w-full h-full object-cover" />
-                        </div>
-                        <div>
-                            <span className="text-lg font-black tracking-tight text-white flex items-center">
-                                TAGWEARLY <span className="ml-1 text-indigo-400 font-extrabold">AI</span>
-                            </span>
-                            <span className="block text-[10px] font-bold text-slate-400 tracking-wider uppercase">
-                                Tech Pack Architect
-                            </span>
+                        <div className="h-11 rounded-xl overflow-hidden border border-indigo-500/30 shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300 bg-slate-900 px-2 py-1 flex items-center">
+                            <img src="/images/logo_large.jpg" alt="Tagwearly AI Logo" className="h-full w-auto object-contain" />
                         </div>
                     </Link>
 
-                    <nav className="hidden md:flex items-center space-x-6 text-xs font-extrabold text-slate-400 uppercase tracking-wider">
+                    {/* Nav Links */}
+                    <nav className="hidden lg:flex items-center space-x-6 text-xs font-extrabold text-slate-300 uppercase tracking-wider">
                         <Link href="/how-it-works" className="hover:text-indigo-400 transition">How It Works</Link>
                         <Link href="/about" className="hover:text-indigo-400 transition">About Us</Link>
                         <Link href="/support" className="hover:text-indigo-400 transition">Support</Link>
                         <Link href="/contact" className="hover:text-indigo-400 transition">Contact</Link>
+                        <a href="#simulator" className="hover:text-indigo-400 transition">Simulator</a>
                         <a href="#pricing" className="hover:text-white transition">Pricing</a>
                     </nav>
 
@@ -168,7 +192,7 @@ export default function Landing({ auth }) {
                         <button
                             type="button"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="p-2.5 md:hidden rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition"
+                            className="p-2.5 lg:hidden rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition"
                             aria-label="Toggle Menu"
                         >
                             <Menu className="w-5 h-5" />
@@ -179,7 +203,7 @@ export default function Landing({ auth }) {
 
             {/* Mobile Slide-Over Drawer from Right */}
             {isMobileMenuOpen && (
-                <div className="fixed inset-0 z-50 md:hidden">
+                <div className="fixed inset-0 z-50 lg:hidden">
                     {/* Backdrop Overlay */}
                     <div
                         className="fixed inset-0 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200"
@@ -191,9 +215,8 @@ export default function Landing({ auth }) {
                         <div className="space-y-6">
                             {/* Drawer Header */}
                             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-                                <div className="flex items-center space-x-2">
-                                    <img src="/images/logo.jpg" alt="Logo" className="w-8 h-8 rounded-lg object-cover" />
-                                    <span className="font-black text-white text-sm tracking-tight">TAGWEARLY AI</span>
+                                <div className="h-8 flex items-center">
+                                    <img src="/images/logo_large.jpg" alt="Logo" className="h-full w-auto object-contain" />
                                 </div>
                                 <button
                                     onClick={() => setIsMobileMenuOpen(false)}
@@ -233,6 +256,13 @@ export default function Landing({ auth }) {
                                 >
                                     Contact Trade Desk
                                 </Link>
+                                <a
+                                    href="#simulator"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block p-3 rounded-2xl bg-slate-950 border border-slate-800 hover:text-white transition"
+                                >
+                                    Live Simulator
+                                </a>
                                 <a
                                     href="#pricing"
                                     onClick={() => setIsMobileMenuOpen(false)}
@@ -277,10 +307,10 @@ export default function Landing({ auth }) {
             )}
 
             {/* Hero Section */}
-            <section className="relative pt-16 pb-20 md:pt-28 md:pb-32">
+            <section className="relative pt-16 pb-20 md:pt-24 md:pb-28">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
                     <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-slate-900 border border-indigo-500/40 text-indigo-400 text-xs font-black uppercase tracking-wider shadow-xl backdrop-blur-md animate-pulse">
-                        <Sparkles className="w-4 h-4" />
+                        <Sparkles className="w-4 h-4 text-purple-400" />
                         <span>Ultra-Premium B2B Digital Tech Pack Engine</span>
                     </div>
 
@@ -295,7 +325,7 @@ export default function Landing({ auth }) {
                         Tagwearly AI converts raw text briefs into multi-page, factory-ready apparel Tech Packs. Complete with BOM, S-XL size grading matrix, seam specs, and Pantone colors for luxury apparel manufacturers in China & Turkey.
                     </p>
 
-                    <div className="flex flex-wrap items-center justify-center gap-5 pt-4">
+                    <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
                         <a
                             href="#simulator"
                             className="px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:to-pink-600 text-white font-black text-sm shadow-2xl shadow-indigo-500/35 transition-all duration-300 flex items-center space-x-3 transform hover:-translate-y-1"
@@ -305,23 +335,24 @@ export default function Landing({ auth }) {
                         </a>
                         <Link
                             href={user ? '/dashboard' : '/register'}
-                            className="px-8 py-4 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-200 font-bold text-sm transition transform hover:-translate-y-0.5 shadow-lg"
+                            className="px-8 py-4 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-200 font-bold text-sm transition transform hover:-translate-y-0.5 shadow-lg flex items-center space-x-2"
                         >
-                            Create B2B Account
+                            <span>Create B2B Account</span>
+                            <ArrowRight className="w-4 h-4 text-indigo-400" />
                         </Link>
                     </div>
 
                     {/* Trust Badges */}
-                    <div className="pt-12 flex flex-wrap items-center justify-center gap-8 text-xs text-slate-400 font-medium">
-                        <div className="flex items-center space-x-2 bg-slate-900/60 border border-slate-800/80 px-4 py-2 rounded-xl">
+                    <div className="pt-10 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400 font-medium">
+                        <div className="flex items-center space-x-2 bg-slate-900/80 border border-slate-800 px-4 py-2 rounded-xl">
                             <ShieldCheck className="w-4 h-4 text-emerald-400" />
                             <span>Merchant: <strong>INCHWARD LIMITED</strong> (UK No. 16021412)</span>
                         </div>
-                        <div className="flex items-center space-x-2 bg-slate-900/60 border border-slate-800/80 px-4 py-2 rounded-xl">
+                        <div className="flex items-center space-x-2 bg-slate-900/80 border border-slate-800 px-4 py-2 rounded-xl">
                             <Globe className="w-4 h-4 text-indigo-400" />
                             <span>0% VAT B2B Reverse Charge Invoices</span>
                         </div>
-                        <div className="flex items-center space-x-2 bg-slate-900/60 border border-slate-800/80 px-4 py-2 rounded-xl">
+                        <div className="flex items-center space-x-2 bg-slate-900/80 border border-slate-800 px-4 py-2 rounded-xl">
                             <CheckCircle2 className="w-4 h-4 text-purple-400" />
                             <span>Factory Verified for China & Turkey Manufacturers</span>
                         </div>
@@ -329,9 +360,47 @@ export default function Landing({ auth }) {
                 </div>
             </section>
 
-            {/* HOOK #1: INTERACTIVE INSTANT TECH PACK SIMULATOR */}
-            <section id="simulator" className="py-20 bg-slate-900/40 border-y border-slate-800/80 backdrop-blur-sm">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            {/* QUICK FEATURE HIGHLIGHT STRIP */}
+            <section className="py-10 bg-slate-900/60 border-y border-slate-800/80">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div className="p-4 space-y-1">
+                        <div className="text-indigo-400 font-black text-2xl flex items-center justify-center space-x-1">
+                            <FileText className="w-5 h-5" />
+                            <span>BOM</span>
+                        </div>
+                        <p className="text-xs text-slate-300 font-bold">Complete Bill of Materials</p>
+                        <p className="text-[11px] text-slate-500">GSM, Fabrics & YKK Hardware</p>
+                    </div>
+                    <div className="p-4 space-y-1">
+                        <div className="text-purple-400 font-black text-2xl flex items-center justify-center space-x-1">
+                            <Layers className="w-5 h-5" />
+                            <span>S-XL</span>
+                        </div>
+                        <p className="text-xs text-slate-300 font-bold">Size Grading Matrix (cm)</p>
+                        <p className="text-[11px] text-slate-500">Precision Factory POM Specs</p>
+                    </div>
+                    <div className="p-4 space-y-1">
+                        <div className="text-pink-400 font-black text-2xl flex items-center justify-center space-x-1">
+                            <Palette className="w-5 h-5" />
+                            <span>Pantone</span>
+                        </div>
+                        <p className="text-xs text-slate-300 font-bold">TCX & TPG Colors</p>
+                        <p className="text-[11px] text-slate-500">Exact Dye Matching Swatches</p>
+                    </div>
+                    <div className="p-4 space-y-1">
+                        <div className="text-emerald-400 font-black text-2xl flex items-center justify-center space-x-1">
+                            <Scissors className="w-5 h-5" />
+                            <span>ISO Seams</span>
+                        </div>
+                        <p className="text-xs text-slate-300 font-bold">Seams & Stitching Specs</p>
+                        <p className="text-[11px] text-slate-500">ISO 607 / Flatlock & SPI Density</p>
+                    </div>
+                </div>
+            </section>
+
+            {/* INTERACTIVE INSTANT TECH PACK SIMULATOR */}
+            <section id="simulator" className="py-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
                     <div className="text-center space-y-3 max-w-3xl mx-auto">
                         <span className="px-3.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-black uppercase tracking-wider">
                             Interactive Studio Sandbox
@@ -340,21 +409,45 @@ export default function Landing({ auth }) {
                             Try the Live AI Spec Generator
                         </h2>
                         <p className="text-sm text-slate-400">
-                            Select a sample garment style below and watch Tagwearly AI calculate factory engineering specifications in real-time.
+                            Select a garment style or category below and watch Tagwearly AI calculate factory engineering specifications in real-time.
                         </p>
                     </div>
 
-                    {/* Interactive Brief Builder */}
+                    {/* Category Filter Pills */}
+                    <div className="flex flex-wrap items-center justify-center gap-2 max-w-xl mx-auto">
+                        {[
+                            { id: 'all', label: 'All Garments' },
+                            { id: 'hoodies', label: '👕 Hoodies & Sweats' },
+                            { id: 'bottoms', label: '👖 Utility Cargo' },
+                            { id: 'tees', label: '👕 Vintage Tees' },
+                            { id: 'outerwear', label: '🧥 Heavy Outerwear' },
+                        ].map((cat) => (
+                            <button
+                                key={cat.id}
+                                type="button"
+                                onClick={() => setSelectedCategory(cat.id)}
+                                className={`px-4 py-2 rounded-xl text-xs font-bold transition ${
+                                    selectedCategory === cat.id
+                                        ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
+                                        : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
+                                }`}
+                            >
+                                {cat.label}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Brief Builder Sandbox Grid */}
                     <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                         {/* Simulator Controls */}
-                        <div className="lg:col-span-5 p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-6 shadow-2xl">
+                        <div className="lg:col-span-5 p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-5 shadow-2xl">
                             <div className="space-y-1">
-                                <h3 className="text-base font-extrabold text-white">Choose Garment Preset</h3>
+                                <h3 className="text-base font-extrabold text-white">Select Garment Preset</h3>
                                 <p className="text-xs text-slate-400">Click any garment to simulate instant AI compilation</p>
                             </div>
 
                             <div className="space-y-3">
-                                {presets.map((preset, idx) => (
+                                {filteredPresets.map((preset, idx) => (
                                     <button
                                         key={idx}
                                         type="button"
@@ -475,8 +568,8 @@ export default function Landing({ auth }) {
                 </div>
             </section>
 
-            {/* HOOK #2: BEFORE VS AFTER COMPARISON */}
-            <section id="comparison" className="py-20">
+            {/* BEFORE VS AFTER COMPARISON */}
+            <section id="comparison" className="py-20 bg-slate-900/40 border-y border-slate-800/80">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
                     <div className="text-center space-y-3 max-w-3xl mx-auto">
                         <span className="px-3.5 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-black uppercase tracking-wider">
@@ -554,8 +647,8 @@ export default function Landing({ auth }) {
                 </div>
             </section>
 
-            {/* HOOK #3: INTERACTIVE ROI CALCULATOR */}
-            <section id="calculator" className="py-20 bg-slate-900/40 border-y border-slate-800/80">
+            {/* INTERACTIVE ROI CALCULATOR */}
+            <section id="calculator" className="py-20">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
                     <div className="text-center space-y-3">
                         <span className="px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-black uppercase tracking-wider">
@@ -618,7 +711,7 @@ export default function Landing({ auth }) {
             </section>
 
             {/* High-Ticket Pricing Section */}
-            <section id="pricing" className="py-20">
+            <section id="pricing" className="py-20 bg-slate-900/40 border-t border-slate-800">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
                     <div className="text-center space-y-3 max-w-2xl mx-auto">
                         <span className="px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-black uppercase tracking-wider">
@@ -784,46 +877,13 @@ export default function Landing({ auth }) {
                 </div>
             </section>
 
-            {/* FAQ Section */}
-            <section id="faq" className="py-16 bg-slate-900/40 border-t border-slate-800">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-                    <div className="text-center space-y-2">
-                        <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-                            Frequently Asked Questions
-                        </h2>
-                        <p className="text-xs text-slate-400">Everything you need to know about factory PDF generation</p>
-                    </div>
-
-                    <div className="space-y-4 text-xs">
-                        <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
-                            <h3 className="text-sm font-bold text-white">Can I send the generated PDF directly to factories in China or Turkey?</h3>
-                            <p className="text-slate-400 leading-relaxed">
-                                Yes. Tagwearly AI formats all measurements (cm), seam types (ISO 607 / 401), SPI density, and Pantone TCX/TPG color swatches according to international apparel manufacturing standards used by OEMs in Asia and Europe.
-                            </p>
-                        </div>
-
-                        <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
-                            <h3 className="text-sm font-bold text-white">How does B2B invoicing work?</h3>
-                            <p className="text-slate-400 leading-relaxed">
-                                Every top-up transaction generates an official B2B PDF invoice issued by <strong>INCHWARD LIMITED</strong> (Company No. 16021412, UK) under 0% VAT Reverse Charge rules. The invoice is automatically sent to your email and downloadable in your wallet dashboard.
-                            </p>
-                        </div>
-
-                        <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
-                            <h3 className="text-sm font-bold text-white">Are pre-production physical samples still required?</h3>
-                            <p className="text-slate-400 leading-relaxed">
-                                Yes. While Tagwearly AI provides precise engineering specs, our Terms of Service mandate that brand owners produce and fit-test a physical prototype sample before initiating bulk manufacturing runs.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Footer */}
+            {/* Footer with High-Res Logo */}
             <footer className="border-t border-slate-900 bg-slate-950 py-12 text-xs text-slate-500">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
                     <div>
-                        <div className="font-extrabold text-white text-sm">TAGWEARLY AI</div>
+                        <div className="h-10 mb-2 flex items-center">
+                            <img src="/images/logo_large.jpg" alt="Tagwearly AI Logo" className="h-full w-auto object-contain" />
+                        </div>
                         <p className="text-slate-400 mt-1">INCHWARD LIMITED • Registered in England & Wales No. 16021412</p>
                         <p className="text-[11px] text-slate-500">Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, CF31 1JF, UK</p>
                     </div>
@@ -839,6 +899,29 @@ export default function Landing({ auth }) {
                     </div>
                 </div>
             </footer>
+
+            {/* QUICK FLOATING STICKY ACTION BAR (MOBILE & DESKTOP) */}
+            <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-lg bg-slate-900/90 backdrop-blur-xl border border-slate-700/80 rounded-2xl p-2.5 shadow-2xl flex items-center justify-between gap-3">
+                <div className="flex items-center space-x-2 pl-2">
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="text-xs font-black text-white">Tagwearly AI Engine</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                    <a
+                        href="#simulator"
+                        className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition"
+                    >
+                        Simulator
+                    </a>
+                    <Link
+                        href={user ? '/dashboard' : '/register'}
+                        className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs shadow-md shadow-indigo-600/30 transition flex items-center space-x-1"
+                    >
+                        <span>Create Spec</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                </div>
+            </div>
 
             <CookieConsent />
         </div>
