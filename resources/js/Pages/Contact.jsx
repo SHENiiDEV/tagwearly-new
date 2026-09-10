@@ -143,7 +143,7 @@ export default function Contact({ company }) {
 
                                 <div>
                                     <span className="text-slate-500 block text-[10px] font-bold uppercase">Registration Number</span>
-                                    <strong className="text-white">Co. No. {company?.company_number || '16133244'} (England & Wales)</strong>
+                                    <strong className="text-white">Co. No. {company?.number || company?.company_number || '16133244'} (England & Wales)</strong>
                                 </div>
 
                                 <div>

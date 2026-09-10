@@ -8,7 +8,7 @@ import { useCurrency } from '@/Components/CurrencyContext';
 import { Sparkles, Wallet, PlusCircle, LogOut, Layers, FileText, Menu, X, HelpCircle, Building2, Phone } from 'lucide-react';
 
 export default function AppLayout({ children }) {
-    const { auth, flash } = usePage().props;
+    const { auth, flash, company } = usePage().props;
     const user = auth?.user;
     const [isTopUpOpen, setIsTopUpOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -277,8 +277,8 @@ export default function AppLayout({ children }) {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
                     <div>
                         <div className="font-extrabold text-white">TAGWEARLY AI</div>
-                        <p className="text-slate-400 mt-0.5">CORPORATE ENTITY LIMITED • Registered in England & Wales No. 16133244</p>
-                        <p className="text-[11px] text-slate-500">37 Cremer Street, London, England, E2 8HD</p>
+                        <p className="text-slate-400 mt-0.5">{company?.name || 'CORPORATE ENTITY LIMITED'} • Registered in England & Wales No. {company?.number || '16133244'}</p>
+                        <p className="text-[11px] text-slate-500">{company?.address || '37 Cremer Street, London, England, E2 8HD'}</p>
                     </div>
                     <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs">
                         <Link href="/how-it-works" className="hover:text-slate-300 transition font-medium">How It Works</Link>

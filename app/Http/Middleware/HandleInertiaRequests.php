@@ -48,6 +48,12 @@ class HandleInertiaRequests extends Middleware
                     'wallet_balance' => (float) $request->user()->wallet_balance,
                 ] : null,
             ],
+            'company' => [
+                'name' => config('app.company_name', 'CORPORATE ENTITY LIMITED'),
+                'number' => config('app.company_number', '16133244'),
+                'address' => config('app.company_address', '37 Cremer Street, London, England, E2 8HD'),
+                'email' => config('mail.from.address', 'info@tagwearly.co.uk'),
+            ],
             'flash' => [
                 'success' => fn () => $request->session()->get('success'),
                 'error' => fn () => $request->session()->get('error'),

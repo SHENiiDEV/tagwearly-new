@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import AppLayout from '@/Layouts/AppLayout';
 import { Lock, ShieldCheck, Building2, EyeOff, Server } from 'lucide-react';
 
 export default function Privacy() {
+    const { company } = usePage().props;
     return (
         <AppLayout>
             <div className="max-w-4xl mx-auto space-y-8 py-4">
@@ -15,7 +16,7 @@ export default function Privacy() {
                     </div>
                     <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight">Privacy Policy & IP Guarantee</h1>
                     <p className="text-xs text-slate-400">
-                        Design Brief Confidentiality & UK GDPR Data Protection for <strong>CORPORATE ENTITY LIMITED</strong>
+                        Design Brief Confidentiality & UK GDPR Data Protection for <strong>{company?.name || 'CORPORATE ENTITY LIMITED'}</strong>
                     </p>
 
                     {/* Policy Tabs */}
@@ -47,9 +48,9 @@ export default function Privacy() {
                         <Building2 className="w-4 h-4 text-indigo-400" />
                         <span>Data Controller Entity</span>
                     </div>
-                    <p><strong>Company Name:</strong> CORPORATE ENTITY LIMITED (Company No. 16133244)</p>
-                    <p><strong>Registered Address:</strong> 37 Cremer Street, London, England, E2 8HD</p>
-                    <p><strong>Data Protection Contact:</strong> info@tagwearly.co.uk</p>
+                    <p><strong>Company Name:</strong> {company?.name || 'CORPORATE ENTITY LIMITED'} (Company No. {company?.number || '16133244'})</p>
+                    <p><strong>Registered Address:</strong> {company?.address || '37 Cremer Street, London, England, E2 8HD'}</p>
+                    <p><strong>Data Protection Contact:</strong> {company?.email || 'info@tagwearly.co.uk'}</p>
                 </div>
 
                 {/* Policy Clauses */}
@@ -76,7 +77,7 @@ export default function Privacy() {
                     <section className="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
                         <h2 className="text-base font-extrabold text-white">2. UK GDPR & Data Protection Act 2018</h2>
                         <p>
-                            <strong>CORPORATE ENTITY LIMITED</strong> acts as the Data Controller under United Kingdom General Data Protection Regulation (UK GDPR).
+                            <strong>{company?.name || 'CORPORATE ENTITY LIMITED'}</strong> acts as the Data Controller under United Kingdom General Data Protection Regulation (UK GDPR).
                         </p>
                         <p className="text-xs text-slate-400">
                             We collect personal registration data (name, surname, work email, phone number, date of birth, and B2B billing address) strictly for account management, fraud prevention, and B2B invoice generation.

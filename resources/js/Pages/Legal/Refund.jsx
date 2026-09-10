@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import AppLayout from '@/Layouts/AppLayout';
 import { RefreshCw, ShieldAlert, Building2, Mail, CheckCircle2 } from 'lucide-react';
 
 export default function Refund() {
+    const { company } = usePage().props;
     return (
         <AppLayout>
             <div className="max-w-4xl mx-auto space-y-8 py-4">
@@ -15,7 +16,7 @@ export default function Refund() {
                     </div>
                     <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight">Refund & Charge Policy</h1>
                     <p className="text-xs text-slate-400">
-                        B2B Commercial Refund Terms for <strong>CORPORATE ENTITY LIMITED</strong>
+                        B2B Commercial Refund Terms for <strong>{company?.name || 'CORPORATE ENTITY LIMITED'}</strong>
                     </p>
 
                     {/* Policy Tabs */}
@@ -47,9 +48,9 @@ export default function Refund() {
                         <Building2 className="w-4 h-4 text-indigo-400" />
                         <span>Commercial Merchant Entity</span>
                     </div>
-                    <p><strong>Company Name:</strong> CORPORATE ENTITY LIMITED (Company No. 16133244)</p>
-                    <p><strong>Registered Address:</strong> 37 Cremer Street, London, England, E2 8HD</p>
-                    <p><strong>Refund Claims Email:</strong> info@tagwearly.co.uk</p>
+                    <p><strong>Company Name:</strong> {company?.name || 'CORPORATE ENTITY LIMITED'} (Company No. {company?.number || '16133244'})</p>
+                    <p><strong>Registered Address:</strong> {company?.address || '37 Cremer Street, London, England, E2 8HD'}</p>
+                    <p><strong>Refund Claims Email:</strong> {company?.email || 'info@tagwearly.co.uk'}</p>
                 </div>
 
                 {/* Policy Clauses */}
@@ -58,7 +59,7 @@ export default function Refund() {
                     <section className="p-6 rounded-2xl bg-slate-900 border border-amber-500/40 space-y-4 shadow-xl">
                         <h2 className="text-base font-extrabold text-white">1. Strict B2B 14-Day Unused Wallet Balance Rule</h2>
                         <p>
-                            Tagwearly AI operates strictly as a digital B2B SaaS platform under <strong>CORPORATE ENTITY LIMITED</strong>.
+                            Tagwearly AI operates strictly as a digital B2B SaaS platform under <strong>{company?.name || 'CORPORATE ENTITY LIMITED'}</strong>.
                         </p>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">

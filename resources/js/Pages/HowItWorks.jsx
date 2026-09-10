@@ -9,6 +9,7 @@ import {
 
 export default function HowItWorks() {
     const { formatPrice } = useCurrency();
+    const { company } = usePage().props;
 
     const steps = [
         {
@@ -17,12 +18,12 @@ export default function HowItWorks() {
             subtitle: 'Institutional B2B Account Setup',
             icon: Wallet,
             color: 'indigo',
-            badge: 'No Mandatory Subscriptions',
-            description: 'Instant account registration with zero monthly lock-in contracts. Load your corporate balance in EUR, USD, or GBP with 100% flexibility.',
+            badge: 'Multi-Currency EUR/USD/GBP',
+            description: 'Create your B2B account in seconds. Deposit funds via instant credit card or corporate transfer without recurring subscription lock-ins.',
             features: [
-                'Multi-Currency Balance Engine (EUR € / USD $ / GBP £)',
-                '14-Day 100% Unused Funds Money-Back Guarantee',
-                'Automated UK B2B PDF Tax Invoices (0% VAT Reverse Charge)',
+                '100% Unspent Deposit Refund Guarantee (14-Day SLA)',
+                '0% VAT UK B2B Reverse Charge Invoice Generation',
+                'Multi-Currency Auto-Conversion (EUR / USD / GBP)',
             ],
         },
         {
@@ -31,12 +32,12 @@ export default function HowItWorks() {
             subtitle: 'Tier-1 OEM/ODM Network Scanning',
             icon: Cpu,
             color: 'purple',
-            badge: 'Scan < 60 Seconds',
-            description: 'Our proprietary neural engine autonomously scans over 1,200+ verified garment manufacturers across Asia and Europe.',
+            badge: '1,200+ Audited OEM/ODM Factories',
+            description: 'Describe your clothing concept or upload reference images. Our AI scans Shenzhen, Ningbo, Dongguan & Turkey manufacturing hubs in under 60 seconds.',
             features: [
-                'Vetted Apparel Factories in Shenzhen, Ningbo, Dongguan & Vietnam',
-                'BOM Component & GSM Fabric Weight Analysis',
-                'Pantone TCX / TPG Swatch Matching & ISO Seam Density Specs',
+                'Automated HS Code Classification & Tariff Estimation',
+                'China & Turkey Sea Freight / Express Landed Cost Math',
+                'Minimum Order Quantity (MOQ) Matching per Tier',
             ],
         },
         {
@@ -45,12 +46,12 @@ export default function HowItWorks() {
             subtitle: 'Turnkey Financial Architecture',
             icon: Calculator,
             color: 'emerald',
-            badge: 'HS Code Classification',
-            description: 'Eliminate surprise import costs. Automatically classify garment HS Codes and calculate ocean container freight, duties, and landed unit costs.',
+            badge: 'Unit Cost Precision',
+            description: 'Calculate unit manufacturing costs down to the cent, including fabric GSM, trims, packaging, freight forwarder fees, and UK/EU customs duties.',
             features: [
-                'Automatic HS Code Classification (Chapter 61 & 62 Apparel)',
-                'UK & EU Customs Tariff & Freight Rate Simulation',
-                'Turnkey Cost Per Unit Calculation before sample approval',
+                'Fabric Consumption & Waste Percentage Calculation',
+                'Customs Duty & Import Tariff Breakdown',
+                'Target Retail Markup & Profit Margin Protection',
             ],
         },
         {
@@ -64,7 +65,7 @@ export default function HowItWorks() {
             features: [
                 'Bilingual English & Chinese (中文) Negotiation Scripts',
                 'High-Resolution Vector PDF Tech Pack Hand-Off',
-                'Official Tax Receipts Stamped PAID & VERIFIED by CORPORATE ENTITY LIMITED',
+                `Official Tax Receipts Stamped PAID & VERIFIED by ${company?.name || 'CORPORATE ENTITY LIMITED'}`,
             ],
         },
     ];

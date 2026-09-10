@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import FloatingCurrencyDropdown from '@/Components/FloatingCurrencyDropdown';
 import CookieConsent from '@/Components/CookieConsent';
 import OfflineBanner from '@/Components/OfflineBanner';
@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 
 export default function Landing({ auth }) {
+    const { company } = usePage().props;
     const user = auth?.user;
     const { formatPrice } = useCurrency();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -344,7 +345,7 @@ export default function Landing({ auth }) {
                     <div className="pt-10 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400 font-medium">
                         <div className="flex items-center space-x-2 bg-slate-900/80 border border-slate-800 px-4 py-2 rounded-xl">
                             <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                            <span>Merchant: <strong>CORPORATE ENTITY LIMITED</strong> (UK No. 16133244)</span>
+                            <span>Merchant: <strong>{company?.name || 'CORPORATE ENTITY LIMITED'}</strong> (UK No. {company?.number || '16133244'})</span>
                         </div>
                         <div className="flex items-center space-x-2 bg-slate-900/80 border border-slate-800 px-4 py-2 rounded-xl">
                             <Globe className="w-4 h-4 text-indigo-400" />
@@ -882,8 +883,8 @@ export default function Landing({ auth }) {
                         <div className="h-10 mb-3 flex items-center">
                             <img src="/images/logo_horizontal.png" alt="Tagwearly AI Logo" className="h-full w-auto object-contain drop-shadow-md" />
                         </div>
-                        <p className="text-slate-400 mt-1">CORPORATE ENTITY LIMITED • Registered in England & Wales No. 16133244</p>
-                        <p className="text-[11px] text-slate-500">37 Cremer Street, London, England, E2 8HD</p>
+                        <p className="text-slate-400 mt-1">{company?.name || 'CORPORATE ENTITY LIMITED'} • Registered in England & Wales No. {company?.number || '16133244'}</p>
+                        <p className="text-[11px] text-slate-500">{company?.address || '37 Cremer Street, London, England, E2 8HD'}</p>
                     </div>
 
                     <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs">

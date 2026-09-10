@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useForm } from '@inertiajs/react';
+import { useForm, usePage } from '@inertiajs/react';
 import { X, CreditCard, ShieldCheck, Zap, Sparkles } from 'lucide-react';
 
 export default function TopUpModal({ isOpen, onClose }) {
+    const { company } = usePage().props;
     if (!isOpen) return null;
 
     const [selectedPreset, setSelectedPreset] = useState('pro');
@@ -112,7 +113,7 @@ export default function TopUpModal({ isOpen, onClose }) {
                             <span>B2B Official Invoice Included</span>
                         </div>
                         <p className="text-[11px] leading-relaxed text-slate-300">
-                            Issued by <strong>CORPORATE ENTITY LIMITED</strong> (Company No. 16133244, UK). 0% VAT Reverse Charge. Instant automated PDF invoice sent to your email.
+                            Issued by <strong>{company?.name || 'CORPORATE ENTITY LIMITED'}</strong> (Company No. {company?.number || '16133244'}, UK). 0% VAT Reverse Charge. Instant automated PDF invoice sent to your email.
                         </p>
                     </div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import AppLayout from '@/Layouts/AppLayout';
 import {
     Building2, ShieldCheck, Cpu, TrendingUp, Clock, Lock,
@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 
 export default function About() {
+    const { company } = usePage().props;
     return (
         <AppLayout>
             <div className="space-y-16 py-6 max-w-5xl mx-auto">
@@ -112,15 +113,15 @@ export default function About() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-300">
                         <div>
                             <span className="text-slate-500 block text-[10px] font-bold uppercase">Legal Entity Name</span>
-                            <strong className="text-white text-sm">CORPORATE ENTITY LIMITED</strong>
+                            <strong className="text-white text-sm">{company?.name || 'CORPORATE ENTITY LIMITED'}</strong>
                         </div>
                         <div>
                             <span className="text-slate-500 block text-[10px] font-bold uppercase">UK Company Registration</span>
-                            <strong className="text-white text-sm">Co. No. 16133244 (England & Wales)</strong>
+                            <strong className="text-white text-sm">Co. No. {company?.number || '16133244'} (England & Wales)</strong>
                         </div>
                         <div>
                             <span className="text-slate-500 block text-[10px] font-bold uppercase">Registered Address</span>
-                            <span className="text-slate-300">37 Cremer Street, London, England, E2 8HD</span>
+                            <span className="text-slate-300">{company?.address || '37 Cremer Street, London, England, E2 8HD'}</span>
                         </div>
                         <div>
                             <span className="text-slate-500 block text-[10px] font-bold uppercase">Tax & Billing Compliance</span>
