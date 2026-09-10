@@ -64,7 +64,7 @@ export default function HowItWorks() {
             features: [
                 'Bilingual English & Chinese (中文) Negotiation Scripts',
                 'High-Resolution Vector PDF Tech Pack Hand-Off',
-                'Official Tax Receipts Stamped PAID & VERIFIED by INCHWARD LIMITED',
+                'Official Tax Receipts Stamped PAID & VERIFIED by CORPORATE ENTITY LIMITED',
             ],
         },
     ];

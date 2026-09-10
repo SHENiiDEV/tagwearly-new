@@ -48,13 +48,13 @@ class DocumentPaymentMail extends Mailable
             'transaction' => $this->transaction,
             'user' => $this->user,
             'company' => [
-                'name' => 'INCHWARD LIMITED',
-                'company_number' => '16021412',
-                'address' => 'Academy House, 11 Dunraven Place',
-                'city_postcode' => 'Bridgend, Mid Glamorgan, CF31 1JF',
+                'name' => config('app.company_name', 'CORPORATE ENTITY LIMITED'),
+                'company_number' => config('app.company_number', '16133244'),
+                'address' => config('app.company_address', '37 Cremer Street, London, England, E2 8HD'),
+                'city_postcode' => 'London, E2 8HD',
                 'country' => 'United Kingdom',
                 'vat_rate' => '0% UK B2B / Reverse Charge',
-                'email' => 'info@tagwearly.co.uk',
+                'email' => config('mail.from.address', 'info@tagwearly.co.uk'),
             ],
         ])->setPaper('a4', 'portrait');
 

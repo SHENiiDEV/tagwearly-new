@@ -20,7 +20,7 @@ export default function Support() {
         },
         {
             q: 'How is 0% VAT UK B2B Reverse Charge applied to my invoices?',
-            a: 'As digital export services provided by INCHWARD LIMITED (UK Co. No. 16021412), B2B transactions are subject to 0% VAT under Reverse Charge rules. Every transaction generates an automated B2B PDF tax invoice stamped PAID & VERIFIED.',
+            a: 'As digital export services provided by CORPORATE ENTITY LIMITED (UK Co. No. 16133244), B2B transactions are subject to 0% VAT under Reverse Charge rules. Every transaction generates an automated B2B PDF tax invoice stamped PAID & VERIFIED.',
         },
         {
             q: 'Who owns the Intellectual Property (IP) of generated Tech Packs?',

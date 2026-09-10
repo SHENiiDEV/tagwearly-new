@@ -15,7 +15,7 @@ export default function Privacy() {
                     </div>
                     <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight">Privacy Policy & IP Guarantee</h1>
                     <p className="text-xs text-slate-400">
-                        Design Brief Confidentiality & UK GDPR Data Protection for <strong>DRAYBOND LIMITED</strong>
+                        Design Brief Confidentiality & UK GDPR Data Protection for <strong>CORPORATE ENTITY LIMITED</strong>
                     </p>
 
                     {/* Policy Tabs */}
@@ -47,8 +47,8 @@ export default function Privacy() {
                         <Building2 className="w-4 h-4 text-indigo-400" />
                         <span>Data Controller Entity</span>
                     </div>
-                    <p><strong>Company Name:</strong> INCHWARD LIMITED (Company No. 16021412)</p>
-                    <p><strong>Registered Address:</strong> Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, UK, CF31 1JF</p>
+                    <p><strong>Company Name:</strong> CORPORATE ENTITY LIMITED (Company No. 16133244)</p>
+                    <p><strong>Registered Address:</strong> 37 Cremer Street, London, England, E2 8HD</p>
                     <p><strong>Data Protection Contact:</strong> info@tagwearly.co.uk</p>
                 </div>
 
@@ -76,7 +76,7 @@ export default function Privacy() {
                     <section className="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
                         <h2 className="text-base font-extrabold text-white">2. UK GDPR & Data Protection Act 2018</h2>
                         <p>
-                            <strong>DRAYBOND LIMITED</strong> acts as the Data Controller under United Kingdom General Data Protection Regulation (UK GDPR).
+                            <strong>CORPORATE ENTITY LIMITED</strong> acts as the Data Controller under United Kingdom General Data Protection Regulation (UK GDPR).
                         </p>
                         <p className="text-xs text-slate-400">
                             We collect personal registration data (name, surname, work email, phone number, date of birth, and B2B billing address) strictly for account management, fraud prevention, and B2B invoice generation.

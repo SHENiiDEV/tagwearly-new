@@ -12,9 +12,9 @@ class ContactController extends Controller
     public function show()
     {
         $company = [
-            'name' => config('app.company_name', 'INCHWARD LIMITED'),
-            'company_number' => config('app.company_number', '16021412'),
-            'address' => config('app.company_address', 'Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, CF31 1JF, United Kingdom'),
+            'name' => config('app.company_name', 'CORPORATE ENTITY LIMITED'),
+            'company_number' => config('app.company_number', '16133244'),
+            'address' => config('app.company_address', '37 Cremer Street, London, England, E2 8HD'),
             'email' => config('mail.from.address', 'info@tagwearly.co.uk'),
             'sla' => '24-48 Working Hours SLA Response',
         ];

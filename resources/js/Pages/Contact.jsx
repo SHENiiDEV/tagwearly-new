@@ -138,18 +138,18 @@ export default function Contact({ company }) {
                             <div className="space-y-3 text-xs text-slate-300">
                                 <div>
                                     <span className="text-slate-500 block text-[10px] font-bold uppercase">Company Name</span>
-                                    <strong className="text-white">{company?.name || 'INCHWARD LIMITED'}</strong>
+                                    <strong className="text-white">{company?.name || 'CORPORATE ENTITY LIMITED'}</strong>
                                 </div>
 
                                 <div>
                                     <span className="text-slate-500 block text-[10px] font-bold uppercase">Registration Number</span>
-                                    <strong className="text-white">Co. No. {company?.company_number || '16021412'} (England & Wales)</strong>
+                                    <strong className="text-white">Co. No. {company?.company_number || '16133244'} (England & Wales)</strong>
                                 </div>
 
                                 <div>
                                     <span className="text-slate-500 block text-[10px] font-bold uppercase">Registered Address</span>
                                     <span className="text-slate-300 leading-relaxed block mt-0.5">
-                                        {company?.address || 'Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, CF31 1JF, United Kingdom'}
+                                        {company?.address || '37 Cremer Street, London, England, E2 8HD'}
                                     </span>
                                 </div>
 

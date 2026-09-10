@@ -161,11 +161,10 @@
         <tr>
             <td>
                 <div class="section-title">Merchant of Record (Issuer)</div>
-                <div class="company-name">INCHWARD LIMITED</div>
-                <div class="text-muted">Registered in England & Wales • Co. No. 16021412</div>
-                <div class="text-muted">Academy House, 11 Dunraven Place</div>
-                <div class="text-muted">Bridgend, Mid Glamorgan, CF31 1JF, United Kingdom</div>
-                <div class="text-muted">Email: {{ $company['email'] ?? 'info@tagwearly.co.uk' }}</div>
+                <div class="company-name">{{ $company['name'] ?? config('app.company_name', 'CORPORATE ENTITY LIMITED') }}</div>
+                <div class="text-muted">Registered in England & Wales • Co. No. {{ $company['company_number'] ?? config('app.company_number', '16133244') }}</div>
+                <div class="text-muted">{{ $company['address'] ?? config('app.company_address', '37 Cremer Street, London, England, E2 8HD') }}</div>
+                <div class="text-muted">Email: {{ $company['email'] ?? config('mail.from.address', 'info@tagwearly.co.uk') }}</div>
             </td>
             <td style="text-align: right;">
                 <div class="section-title">Billed To (Customer)</div>
@@ -230,7 +229,7 @@
 
     <!-- Footer -->
     <div class="footer">
-        INCHWARD LIMITED • Academy House, 11 Dunraven Place, Bridgend, CF31 1JF, UK • Registered Company No. 16021412
+        {{ $company['name'] ?? config('app.company_name', 'CORPORATE ENTITY LIMITED') }} • {{ $company['address'] ?? config('app.company_address', '37 Cremer Street, London, England, E2 8HD') }} • Registered Company No. {{ $company['company_number'] ?? config('app.company_number', '16133244') }}
     </div>
 
 </body>

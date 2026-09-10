@@ -72,7 +72,7 @@
     <!-- Footer -->
     <footer class="border-t border-slate-900 bg-slate-950 py-6 text-xs text-slate-500 text-center">
         <div class="max-w-7xl mx-auto px-4">
-            <span>DRAYBOND LIMITED • UK Company No. 16021806 • Tagwearly AI</span>
+            <span>CORPORATE ENTITY LIMITED • UK Company No. 16133244 • Tagwearly AI</span>
         </div>
     </footer>
 </body>

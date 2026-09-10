@@ -32,7 +32,7 @@
                     </tr>
                 </table>
 
-                <p>Your official B2B PDF invoice issued by <strong>DRAYBOND LIMITED</strong> (Company No. 16021806) is attached to this email and can also be downloaded anytime in your billing dashboard.</p>
+                <p>Your official B2B PDF invoice issued by <strong>CORPORATE ENTITY LIMITED</strong> (Company No. 16133244) is attached to this email and can also be downloaded anytime in your billing dashboard.</p>
 
                 <div style="text-align: center; margin-top: 30px;">
                     <a href="{{ url('/tech-packs/create') }}" style="background-color: #10b981; color: #ffffff; text-decoration: none; padding: 12px 28px; border-radius: 6px; font-weight: 700; display: inline-block;">Generate Tech Pack Now</a>
@@ -41,7 +41,7 @@
         </tr>
         <tr>
             <td style="padding: 20px; text-align: center; font-size: 11px; color: #64748b; border-top: 1px solid #334155;">
-                DRAYBOND LIMITED • Academy House, 11 Dunraven Place, Bridgend, UK • VAT 0% Reverse Charge
+                CORPORATE ENTITY LIMITED • 37 Cremer Street, London, England, E2 8HD • VAT 0% Reverse Charge
             </td>
         </tr>
     </table>

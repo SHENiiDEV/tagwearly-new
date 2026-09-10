@@ -15,7 +15,7 @@ export default function Terms() {
                     </div>
                     <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight">Terms of Service</h1>
                     <p className="text-xs text-slate-400">
-                        Official Legal Terms & Manufacturing Liability Disclaimer for <strong>DRAYBOND LIMITED</strong>
+                        Official Legal Terms & Manufacturing Liability Disclaimer for <strong>CORPORATE ENTITY LIMITED</strong>
                     </p>
 
                     {/* Policy Tabs */}
@@ -47,9 +47,9 @@ export default function Terms() {
                         <Building2 className="w-4 h-4 text-indigo-400" />
                         <span>Operating Merchant Entity</span>
                     </div>
-                    <p><strong>Company Name:</strong> INCHWARD LIMITED</p>
-                    <p><strong>Registered Company Number:</strong> 16021412 (England & Wales)</p>
-                    <p><strong>Registered Address:</strong> Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, United Kingdom, CF31 1JF</p>
+                    <p><strong>Company Name:</strong> CORPORATE ENTITY LIMITED</p>
+                    <p><strong>Registered Company Number:</strong> 16133244 (England & Wales)</p>
+                    <p><strong>Registered Address:</strong> 37 Cremer Street, London, England, E2 8HD</p>
                     <p><strong>Official Contact Email:</strong> info@tagwearly.co.uk</p>
                 </div>
 
@@ -58,7 +58,7 @@ export default function Terms() {
                     <section className="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
                         <h2 className="text-base font-extrabold text-white">1. Acceptance of Terms & B2B Capacity</h2>
                         <p>
-                            By registering an account, depositing funds into the wallet balance, or generating AI Fashion Tech Pack specifications on Tagwearly AI (operated by <strong>DRAYBOND LIMITED</strong>), you confirm that you are acting in a commercial, B2B, or professional brand capacity.
+                            By registering an account, depositing funds into the wallet balance, or generating AI Fashion Tech Pack specifications on Tagwearly AI (operated by <strong>CORPORATE ENTITY LIMITED</strong>), you confirm that you are acting in a commercial, B2B, or professional brand capacity.
                         </p>
                         <p>
                             If you do not agree to all terms set forth herein, you must refrain from using the platform and its automated document generation services.
@@ -78,7 +78,7 @@ export default function Terms() {
                                 <strong>Factory Machinery Audit:</strong> The receiving factory must independently review and verify all size grading tolerances (±cm), seam allowances, stitch density (SPI), and fabric shrinkage properties against their specific manufacturing machinery.
                             </li>
                             <li>
-                                <strong>No Liability for Material Loss:</strong> Neither Tagwearly AI nor DRAYBOND LIMITED accepts any financial claims, damages, or liability for ruined fabric runs, color dyeing mismatches, sizing discrepancies, or factory production delays.
+                                <strong>No Liability for Material Loss:</strong> Neither Tagwearly AI nor CORPORATE ENTITY LIMITED accepts any financial claims, damages, or liability for ruined fabric runs, color dyeing mismatches, sizing discrepancies, or factory production delays.
                             </li>
                         </ul>
                     </section>
@@ -86,10 +86,10 @@ export default function Terms() {
                     <section className="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
                         <h2 className="text-base font-extrabold text-white">3. B2B Wallet & Invoicing Terms</h2>
                         <p>
-                            All pricing (€149 Starter, €499 Pro, €1,499 Collection) is denominated in Euros (€ EUR).
+                            All pricing (€249 Starter, €699 Pro, €1,999 Collection) is denominated in Euros (€ EUR).
                         </p>
                         <p>
-                            Official B2B PDF invoices are generated on the fly for every top-up transaction under <strong>DRAYBOND LIMITED</strong> details, applying a 0% VAT rate (Reverse Charge for international digital services export).
+                            Official B2B PDF invoices are generated on the fly for every top-up transaction under <strong>CORPORATE ENTITY LIMITED</strong> details, applying a 0% VAT rate (Reverse Charge for international digital services export).
                         </p>
                     </section>
 

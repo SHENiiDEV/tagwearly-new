@@ -15,6 +15,10 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'company_name' => env('COMPANY_NAME', 'CORPORATE ENTITY LIMITED'),
+    'company_number' => env('COMPANY_NUMBER', '16133244'),
+    'company_address' => env('COMPANY_ADDRESS', '37 Cremer Street, London, England, E2 8HD'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

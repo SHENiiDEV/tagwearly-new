@@ -21,32 +21,28 @@ export default function WalletIndex({ walletBalance = 0, transactions = [] }) {
 
                 {/* Top Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {/* Wallet Balance */}
-                    <div className="p-8 rounded-3xl bg-gradient-to-br from-indigo-900/40 via-slate-900 to-slate-900 border border-indigo-500/30 shadow-2xl flex flex-col justify-between space-y-6">
-                        <div className="flex items-center justify-between">
-                            <div className="p-3 rounded-2xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-                                <Wallet className="w-6 h-6" />
-                            </div>
-                            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Account EUR Balance</span>
-                        </div>
-
+                    {/* Balance Card */}
+                    <div className="p-8 rounded-3xl bg-slate-900 border border-slate-800 flex flex-col justify-between space-y-4 shadow-xl">
                         <div>
-                            <div className="text-4xl font-black text-white tracking-tight">
-                                €{walletBalance.toFixed(2)}
+                            <span className="text-xs font-black uppercase tracking-wider text-slate-400">
+                                Available Corporate Credit
+                            </span>
+                            <div className="text-4xl font-black text-white mt-1">
+                                €{Number(auth.user.wallet_balance || 0).toFixed(2)} <span className="text-sm text-indigo-400 font-bold">EUR</span>
                             </div>
-                            <p className="text-xs text-slate-400 mt-1">Ready for instant AI Tech Pack generation</p>
                         </div>
 
                         <button
+                            type="button"
                             onClick={() => setIsTopUpOpen(true)}
-                            className="w-full py-3.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-lg shadow-indigo-600/25 transition flex items-center justify-center space-x-2"
+                            className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:to-pink-600 text-white font-black text-xs shadow-lg shadow-indigo-500/25 transition flex items-center justify-center space-x-2"
                         >
-                            <PlusCircle className="w-4 h-4" />
-                            <span>Top Up Balance</span>
+                            <Zap className="w-4 h-4 fill-white" />
+                            <span>Top-Up Account Wallet</span>
                         </button>
                     </div>
 
-                    {/* DRAYBOND Legal Details */}
+                    {/* CORPORATE ENTITY LIMITED Legal Details */}
                     <div className="md:col-span-2 p-8 rounded-3xl bg-slate-900 border border-slate-800 flex flex-col justify-between space-y-4">
                         <div className="flex items-center space-x-3">
                             <div className="p-3 rounded-2xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
@@ -61,11 +57,11 @@ export default function WalletIndex({ walletBalance = 0, transactions = [] }) {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300">
                             <div>
                                 <span className="text-slate-500 block uppercase text-[10px] font-bold">Company Name</span>
-                                <strong className="text-white">INCHWARD LIMITED</strong> (Company No. 16021412)
+                                <strong className="text-white">CORPORATE ENTITY LIMITED</strong> (Company No. 16133244)
                             </div>
                             <div>
                                 <span className="text-slate-500 block uppercase text-[10px] font-bold">Registered Office</span>
-                                Academy House, 11 Dunraven Place, Bridgend, UK, CF31 1JF
+                                37 Cremer Street, London, England, E2 8HD
                             </div>
                             <div>
                                 <span className="text-slate-500 block uppercase text-[10px] font-bold">Tax & VAT Treatment</span>

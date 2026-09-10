@@ -15,7 +15,7 @@ export default function Refund() {
                     </div>
                     <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight">Refund & Charge Policy</h1>
                     <p className="text-xs text-slate-400">
-                        B2B Commercial Refund Terms for <strong>DRAYBOND LIMITED</strong>
+                        B2B Commercial Refund Terms for <strong>CORPORATE ENTITY LIMITED</strong>
                     </p>
 
                     {/* Policy Tabs */}
@@ -47,8 +47,8 @@ export default function Refund() {
                         <Building2 className="w-4 h-4 text-indigo-400" />
                         <span>Commercial Merchant Entity</span>
                     </div>
-                    <p><strong>Company Name:</strong> INCHWARD LIMITED (Company No. 16021412)</p>
-                    <p><strong>Registered Address:</strong> Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, UK, CF31 1JF</p>
+                    <p><strong>Company Name:</strong> CORPORATE ENTITY LIMITED (Company No. 16133244)</p>
+                    <p><strong>Registered Address:</strong> 37 Cremer Street, London, England, E2 8HD</p>
                     <p><strong>Refund Claims Email:</strong> info@tagwearly.co.uk</p>
                 </div>
 
@@ -58,9 +58,9 @@ export default function Refund() {
                     <section className="p-6 rounded-2xl bg-slate-900 border border-amber-500/40 space-y-4 shadow-xl">
                         <h2 className="text-base font-extrabold text-white">1. Strict B2B 14-Day Unused Wallet Balance Rule</h2>
                         <p>
-                            Tagwearly AI operates strictly as a digital B2B SaaS platform under <strong>DRAYBOND LIMITED</strong>.
+                            Tagwearly AI operates strictly as a digital B2B SaaS platform under <strong>CORPORATE ENTITY LIMITED</strong>.
                         </p>
-                        
+
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                             <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 space-y-1">
                                 <div className="font-extrabold text-white flex items-center space-x-1.5">
@@ -78,7 +78,7 @@ export default function Refund() {
                                     <span>Generated Tech Pack Charges</span>
                                 </div>
                                 <p className="text-[11px] leading-relaxed">
-                                    Deducted funds for generated documents (€149, €499, €1,499) are strictly non-refundable due to immediate digital delivery.
+                                    Deducted funds for generated documents (€249, €699, €1,999) are strictly non-refundable due to immediate digital delivery.
                                 </p>
                             </div>
                         </div>

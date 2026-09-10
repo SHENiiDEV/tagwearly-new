@@ -52,8 +52,8 @@
             </div>
         </div>
         <div class="footer">
-            <strong>INCHWARD LIMITED</strong> • Registered in England & Wales Co. No. 16021412<br>
-            Academy House, 11 Dunraven Place, Bridgend, CF31 1JF, United Kingdom<br>
+            <strong>CORPORATE ENTITY LIMITED</strong> • Registered in England & Wales Co. No. 16133244<br>
+            37 Cremer Street, London, England, E2 8HD<br>
             Official B2B Merchant of Record
         </div>
     </div>

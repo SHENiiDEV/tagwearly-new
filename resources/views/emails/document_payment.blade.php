@@ -59,7 +59,7 @@
             </table>
 
             <p style="font-size: 12px; color: #94a3b8;">
-                Your official B2B PDF invoice issued by <strong>INCHWARD LIMITED</strong> (0% VAT Reverse Charge) is attached to this email and downloadable in your account dashboard.
+                Your official B2B PDF invoice issued by <strong>CORPORATE ENTITY LIMITED</strong> (0% VAT Reverse Charge) is attached to this email and downloadable in your account dashboard.
             </p>
 
             <div class="btn-container">
@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="footer">
-            INCHWARD LIMITED • Co. No. 16021412 • Academy House, 11 Dunraven Place, Bridgend, CF31 1JF, UK
+            CORPORATE ENTITY LIMITED • Co. No. 16133244 • 37 Cremer Street, London, England, E2 8HD
         </div>
     </div>
 </body>

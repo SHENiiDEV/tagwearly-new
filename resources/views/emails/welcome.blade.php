@@ -30,7 +30,7 @@
         </tr>
         <tr>
             <td style="padding: 20px; text-align: center; font-size: 11px; color: #64748b; border-top: 1px solid #334155;">
-                DRAYBOND LIMITED (Company No. 16021806) • Academy House, 11 Dunraven Place, Bridgend, UK
+                CORPORATE ENTITY LIMITED (Company No. 16133244) • 37 Cremer Street, London, England, E2 8HD
             </td>
         </tr>
     </table>
