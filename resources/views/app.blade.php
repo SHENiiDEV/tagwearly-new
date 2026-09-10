@@ -6,8 +6,9 @@
     <title>Tagwearly AI - AI Fashion Tech Pack Architect</title>
 
     <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/png" href="/images/logo_horizontal.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/images/logo_horizontal.png">
 
     <!-- Google Fonts Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
